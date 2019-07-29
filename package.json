@@ -1,0 +1,18 @@
+{
+  "name": "fabrica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc & node dist/index.js",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marco Giuseppe Salafia, Salvatore Mulè",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-snap7": "^0.2.19",
+    "node-opcua": "^2.1.0",
+    "node-snap7": "^1.0.3"
+  }
+}

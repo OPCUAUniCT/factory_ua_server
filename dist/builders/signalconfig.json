@@ -1,0 +1,46 @@
+{
+    "sortingLine": {
+        "pulseCounter": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 4,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierInlet": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 5,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierBehind": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 6,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorConveyorBelt": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 7,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "compressor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 8,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "colorSensor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 6,
+            "amount": 1,
+            "wordLen": 4
+        }
+    }
+}
