@@ -35,6 +35,55 @@
             "amount": 1,
             "wordLen": 1
         },
+        "valveEjector1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 9,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveEjector2": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 10,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveEjector3": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 11,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "counter": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 2,
+            "amount": 1,
+            "wordLen": 4
+        },
+        "lightBarrierWhite": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 32,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierRed": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 33,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierBlue": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 33,
+            "amount": 1,
+            "wordLen": 1
+        },
         "colorSensor": {
             "area": 132,
             "dbNumber": 1,

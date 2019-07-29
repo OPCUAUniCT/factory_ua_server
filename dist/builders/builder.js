@@ -7,30 +7,25 @@ class SystemBuilder {
         this.addressSpace = addressSpace;
         this.nameSpace = nameSpace;
     }
-    create_boolean_getter(config) {
+    create_getter(dataType, config) {
         return () => {
             const { area, dbNumber, start, amount, wordLen } = config;
             let val = this.s7client.ReadArea(area, dbNumber, start, amount, wordLen);
             if (typeof val === "boolean") {
                 return node_opcua_1.StatusCodes.BadNotReadable;
             }
-            return new node_opcua_1.Variant({
-                dataType: node_opcua_1.DataType.Boolean,
-                value: val[0] !== 0
-            });
-        };
-    }
-    create_int16_getter(config) {
-        return () => {
-            const { area, dbNumber, start, amount, wordLen } = config;
-            let val = this.s7client.ReadArea(area, dbNumber, start, amount, wordLen);
-            if (typeof val === "boolean") {
-                return node_opcua_1.StatusCodes.BadNotReadable;
+            let value;
+            switch (dataType) {
+                case node_opcua_1.DataType.Boolean:
+                    value = val[0] !== 0;
+                    break;
+                case node_opcua_1.DataType.Int16:
+                    value = val.readInt16BE(0);
+                    break;
+                default:
+                    throw new Error("DataType not supported");
             }
-            return new node_opcua_1.Variant({
-                dataType: node_opcua_1.DataType.Int16,
-                value: val.readInt16BE(0)
-            });
+            return new node_opcua_1.Variant({ dataType, value });
         };
     }
 }

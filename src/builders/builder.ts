@@ -8,7 +8,7 @@ export abstract class SystemBuilder {
 
     abstract build(): void;
 
-    create_boolean_getter(config: SignalConfigArgument): () => Variant {
+    create_getter(dataType: DataType, config: SignalConfigArgument): () => Variant {
         return (): Variant => {
             const { area, dbNumber, start, amount, wordLen } = config;
             let val = this.s7client.ReadArea(area, dbNumber, start, amount, wordLen);
@@ -16,27 +16,21 @@ export abstract class SystemBuilder {
             if(typeof val === "boolean") {
                 return StatusCodes.BadNotReadable;
             }
-            
-            return new Variant({
-                dataType: DataType.Boolean, 
-                value: val[0] !== 0
-            });
-        }
-    }
-    
-    create_int16_getter(config: SignalConfigArgument): () => Variant {
-        return (): Variant => {
-            const { area, dbNumber, start, amount, wordLen } = config;
-            let val = this.s7client.ReadArea(area, dbNumber, start, amount, wordLen);
 
-            if(typeof val === "boolean") {
-                return StatusCodes.BadNotReadable;
+            let value;
+
+            switch (dataType) {
+                case DataType.Boolean:
+                    value = val[0] !== 0;
+                    break;       
+                case DataType.Int16:
+                    value = val.readInt16BE(0);
+                    break;              
+                default:
+                    throw new Error("DataType not supported");
             }
-            
-            return new Variant({
-                dataType: DataType.Int16, 
-                value: val.readInt16BE(0)
-            });
+
+            return new Variant({ dataType, value });
         }
     }
 }
