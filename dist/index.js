@@ -7,10 +7,14 @@ const node_opcua_1 = require("node-opcua");
 const node_snap7_1 = require("node-snap7");
 const path_1 = __importDefault(require("path"));
 const builder_1 = require("./builders/builder");
-let s7client = new node_snap7_1.S7Client();
-let isConnected = s7client.ConnectTo('192.168.0.1', 0, 1);
-if (!isConnected)
-    throw Error("Unable to connect!");
+let s7clientSortingLine = new node_snap7_1.S7Client();
+let s7clientOven = new node_snap7_1.S7Client();
+let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
+let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
+if (!isSortingLineConnected)
+    throw Error("Unable to connect to SortingLine!");
+if (!isOvenConnected)
+    throw Error("Unable to connect to Oven!");
 let server = new node_opcua_1.OPCUAServer({
     nodeset_filename: node_opcua_1.nodesets.standard_nodeset_file,
     port: 4848,
@@ -22,8 +26,10 @@ let server = new node_opcua_1.OPCUAServer({
 function post_initialize() {
     let addressSpace = server.engine.addressSpace;
     let namespace = addressSpace.getOwnNamespace();
-    let sortingLineBuilder = new builder_1.SortingLineBuilder(s7client, addressSpace, namespace);
+    let sortingLineBuilder = new builder_1.SortingLineBuilder(s7clientSortingLine, addressSpace, namespace);
     sortingLineBuilder.build();
+    let ovenBuilder = new builder_1.OvenBuilder(s7clientOven, addressSpace, namespace);
+    ovenBuilder.build();
     server.start(function () {
         console.log("Server is now listening ... ( press CTRL+C to stop)");
         console.log("port ", server.endpoints[0].port);

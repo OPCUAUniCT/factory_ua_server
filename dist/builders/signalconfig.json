@@ -91,5 +91,168 @@
             "amount": 1,
             "wordLen": 4
         }
+    },
+    "oven": {
+        "motorTurnTableClockWise": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorTurnTableCounterClockWise": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 14,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "conveyorBelt": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 15,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorSaw": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 16,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorOvenRetract": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 17,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorOvenExtend": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 18,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorVacuumLeft": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 19,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorVacuumRight": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 20,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightOven": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 21,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "compressor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 22,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveVacuum": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 23,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveLowering": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 24,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveOvenDoor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 25,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveFeeder": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 26,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchTurnTableVacuum": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 27,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchTurnTableBelt": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 28,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchTurnTableSaw": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 29,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchVacuumLeft": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 30,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchVacuumRight": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 31,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchOvenIn": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 32,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchOvenOut": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 33,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierOven": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 34,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierConveyor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 35,
+            "amount": 1,
+            "wordLen": 1
+        }
     }
 }

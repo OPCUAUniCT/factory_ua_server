@@ -36,6 +36,8 @@ export abstract class SystemBuilder {
 }
 
 export { SortingLineBuilder } from "./sortingLineBuilder";
+export { OvenBuilder } from "./ovenBuilder";
+
 
 export type SignalConfigArgument = {
     area: number;

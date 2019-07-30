@@ -32,4 +32,6 @@ class SystemBuilder {
 exports.SystemBuilder = SystemBuilder;
 var sortingLineBuilder_1 = require("./sortingLineBuilder");
 exports.SortingLineBuilder = sortingLineBuilder_1.SortingLineBuilder;
+var ovenBuilder_1 = require("./ovenBuilder");
+exports.OvenBuilder = ovenBuilder_1.OvenBuilder;
 //# sourceMappingURL=builder.js.map

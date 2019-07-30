@@ -1,12 +1,16 @@
 import { OPCUAServer, nodesets, OPCUACertificateManager, Variant, DataType } from "node-opcua";
 import { S7Client, Area, WordLen } from 'node-snap7';
 import path from "path";
-import { SortingLineBuilder } from "./builders/builder";
+import { SortingLineBuilder, OvenBuilder } from "./builders/builder";
 
-let s7client = new S7Client();
-let isConnected = s7client.ConnectTo('192.168.0.1', 0, 1);
 
-if (!isConnected) throw Error("Unable to connect!");
+let s7clientSortingLine = new S7Client();
+let s7clientOven = new S7Client();
+let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
+let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
+
+if (!isSortingLineConnected) throw Error("Unable to connect to SortingLine!");
+if (!isOvenConnected) throw Error("Unable to connect to Oven!");
 
 let server = new OPCUAServer({
     nodeset_filename: nodesets.standard_nodeset_file,
@@ -22,8 +26,11 @@ function post_initialize() {
     let addressSpace = server.engine.addressSpace!;
     let namespace = addressSpace.getOwnNamespace();
 
-    let sortingLineBuilder = new SortingLineBuilder(s7client, addressSpace, namespace);
+    let sortingLineBuilder = new SortingLineBuilder(s7clientSortingLine, addressSpace, namespace);
     sortingLineBuilder.build();
+    
+    let ovenBuilder = new OvenBuilder(s7clientOven, addressSpace, namespace);
+    ovenBuilder.build();
 
     server.start(function () {
         console.log("Server is now listening ... ( press CTRL+C to stop)");
