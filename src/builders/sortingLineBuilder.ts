@@ -1,13 +1,12 @@
 import { SystemBuilder } from "./builder";
-import { Variant, DataType, StatusCode, StatusCodes } from "node-opcua";
+import { Variant, DataType, StatusCode, StatusCodes, UAObject } from "node-opcua";
 import { sortingLine } from "./signalconfig.json";
 
 export class SortingLineBuilder extends SystemBuilder {    
 
-    build(): void {
+    build(): UAObject {
         let sortingline = this.nameSpace.addObject({
             browseName: "Sorting Line",
-            organizedBy: this.addressSpace.rootFolder.objects
         });
     
         this.nameSpace.addVariable({
@@ -126,6 +125,8 @@ export class SortingLineBuilder extends SystemBuilder {
                 get: this.get_color_sensor
             }
         });
+
+        return sortingline;
     }
 
     private get_pulse_counter = this.create_getter(DataType.Boolean, sortingLine.pulseCounter);    

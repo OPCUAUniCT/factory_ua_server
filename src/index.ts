@@ -26,11 +26,30 @@ function post_initialize() {
     let addressSpace = server.engine.addressSpace!;
     let namespace = addressSpace.getOwnNamespace();
 
+    let factory = namespace.addObject({
+        browseName: "Factory",
+        organizedBy: addressSpace.rootFolder.objects
+    });
+
+    
+
     let sortingLineBuilder = new SortingLineBuilder(s7clientSortingLine, addressSpace, namespace);
-    sortingLineBuilder.build();
+    let sortingLine = sortingLineBuilder.build();
+
+    
     
     let ovenBuilder = new OvenBuilder(s7clientOven, addressSpace, namespace);
-    ovenBuilder.build();
+    let oven = ovenBuilder.build();
+
+    factory.addReference({
+        referenceType: "HasComponent",
+        nodeId: oven
+    });
+
+    factory.addReference({
+        referenceType: "HasComponent",
+        nodeId: sortingLine
+    });
 
     server.start(function () {
         console.log("Server is now listening ... ( press CTRL+C to stop)");

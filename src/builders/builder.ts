@@ -1,4 +1,4 @@
-import { AddressSpace, Namespace, Variant, StatusCodes, DataType } from "node-opcua";
+import { AddressSpace, Namespace, Variant, StatusCodes, DataType, UAObject } from "node-opcua";
 import { S7Client } from "node-snap7";
 
 
@@ -6,7 +6,7 @@ export abstract class SystemBuilder {
 
     constructor(protected s7client: S7Client, protected addressSpace: AddressSpace, protected nameSpace: Namespace) {}
 
-    abstract build(): void;
+    abstract build(): UAObject;
 
     create_getter(dataType: DataType, config: SignalConfigArgument): () => Variant {
         return (): Variant => {

@@ -1,13 +1,12 @@
 import { SystemBuilder } from "./builder";
 import { oven } from "./signalconfig.json";
-import { DataType } from "node-opcua";
+import { DataType, UAObject } from "node-opcua";
 
 export class OvenBuilder extends SystemBuilder {    
 
-    build(): void {
+    build(): UAObject {
         let oven = this.nameSpace.addObject({
             browseName: "Oven",
-            organizedBy: this.addressSpace.rootFolder.objects
         });
     
         this.nameSpace.addVariable({
@@ -216,6 +215,8 @@ export class OvenBuilder extends SystemBuilder {
                 get: this.get_light_barrier_conveyor
             }
         });
+
+        return oven;
     }
 
     private get_motor_turn_table_clockwise = this.create_getter(DataType.Boolean, oven.motorTurnTableClockWise);    

@@ -33,7 +33,6 @@ class OvenBuilder extends builder_1.SystemBuilder {
     build() {
         let oven = this.nameSpace.addObject({
             browseName: "Oven",
-            organizedBy: this.addressSpace.rootFolder.objects
         });
         this.nameSpace.addVariable({
             browseName: "Motor Turn Table Clockwise",
@@ -219,6 +218,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
                 get: this.get_light_barrier_conveyor
             }
         });
+        return oven;
     }
 }
 exports.OvenBuilder = OvenBuilder;

@@ -80,7 +80,7 @@
         "lightBarrierBlue": {
             "area": 132,
             "dbNumber": 1,
-            "start": 33,
+            "start": 34,
             "amount": 1,
             "wordLen": 1
         },
@@ -254,5 +254,128 @@
             "amount": 1,
             "wordLen": 1
         }
+    },
+    "vacuumGripper": {
+        "referenceSwitchVerticalAxis": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchHorizontalAxis": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchRotate": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderVerticalAxisImpulse1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderVerticalAxisImpulse2": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderHorizontalAxisImpulse1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderHorizontalAxisImpulse2": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderRotateImpulse1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderRotateImpulse2": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorVerticalAxisUp": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorVerticalAxisDown": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorHorizontalAxisBackward": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorHorizontalAxisForward": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorRotateClockwise": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorRotateCounterClockwise": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "compressor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "valveVacuum": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        }
+        
+
     }
 }

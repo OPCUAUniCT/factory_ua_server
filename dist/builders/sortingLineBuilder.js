@@ -23,7 +23,6 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
     build() {
         let sortingline = this.nameSpace.addObject({
             browseName: "Sorting Line",
-            organizedBy: this.addressSpace.rootFolder.objects
         });
         this.nameSpace.addVariable({
             browseName: "Pulse Counter",
@@ -129,6 +128,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
                 get: this.get_color_sensor
             }
         });
+        return sortingline;
     }
 }
 exports.SortingLineBuilder = SortingLineBuilder;
