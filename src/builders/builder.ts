@@ -37,6 +37,7 @@ export abstract class SystemBuilder {
 
 export { SortingLineBuilder } from "./sortingLineBuilder";
 export { OvenBuilder } from "./ovenBuilder";
+export { VacuumGripperBuilder } from "./vacuumGripperBuilder";
 
 
 export type SignalConfigArgument = {

@@ -48,15 +48,6 @@ export class VacuumGripperBuilder extends SystemBuilder{
         });
 
         this.nameSpace.addVariable({
-            browseName: "Encoder Vertical Axis Impulse 2",
-            propertyOf: vacuumgripper,
-            dataType: "Boolean",
-            value: {
-                get: this.get_encoder_vertical_axis_impulse_2
-            }
-        });
-
-        this.nameSpace.addVariable({
             browseName: "Encoder Horizontal Axis Impulse 1",
             propertyOf: vacuumgripper,
             dataType: "Boolean",
@@ -66,29 +57,11 @@ export class VacuumGripperBuilder extends SystemBuilder{
         });
 
         this.nameSpace.addVariable({
-            browseName: "Encoder Horizontal Axis Impulse 2",
-            propertyOf: vacuumgripper,
-            dataType: "Boolean",
-            value: {
-                get: this.get_encoder_horizontal_axis_impulse_2
-            }
-        });
-
-        this.nameSpace.addVariable({
             browseName: "Encoder Rotate Impulse 1",
             propertyOf: vacuumgripper,
             dataType: "Boolean",
             value: {
                 get: this.get_encoder_rotate_impulse_1
-            }
-        });
-
-        this.nameSpace.addVariable({
-            browseName: "Encoder Rotate Impulse 2",
-            propertyOf: vacuumgripper,
-            dataType: "Boolean",
-            value: {
-                get: this.get_encoder_rotate_impulse_2
             }
         });
 
@@ -171,11 +144,8 @@ export class VacuumGripperBuilder extends SystemBuilder{
     private get_ref_switch_horizontal_axis = this.create_getter(DataType.Boolean, vacuumGripper.referenceSwitchHorizontalAxis);    
     private get_ref_switch__rotate = this.create_getter(DataType.Boolean, vacuumGripper.referenceSwitchRotate);    
     private get_encoder_vertical_axis_impulse_1 = this.create_getter(DataType.Boolean, vacuumGripper.encoderVerticalAxisImpulse1);    
-    private get_encoder_vertical_axis_impulse_2 = this.create_getter(DataType.Boolean, vacuumGripper.encoderVerticalAxisImpulse2);    
     private get_encoder_horizontal_axis_impulse_1 = this.create_getter(DataType.Boolean, vacuumGripper.encoderHorizontalAxisImpulse1);    
-    private get_encoder_horizontal_axis_impulse_2 = this.create_getter(DataType.Boolean, vacuumGripper.encoderHorizontalAxisImpulse2);    
     private get_encoder_rotate_impulse_1 = this.create_getter(DataType.Boolean, vacuumGripper.encoderRotateImpulse1);    
-    private get_encoder_rotate_impulse_2 = this.create_getter(DataType.Boolean, vacuumGripper.encoderRotateImpulse2);    
     private get_motor_vertical_axis_up = this.create_getter(DataType.Boolean, vacuumGripper.motorVerticalAxisUp);    
     private get_motor_vertical_axis_down = this.create_getter(DataType.Boolean, vacuumGripper.motorVerticalAxisDown);    
     private get_motor_horizontal_axis_backward = this.create_getter(DataType.Boolean, vacuumGripper.motorHorizontalAxisBackward);    

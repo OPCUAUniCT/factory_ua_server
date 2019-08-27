@@ -9,12 +9,16 @@ const path_1 = __importDefault(require("path"));
 const builder_1 = require("./builders/builder");
 let s7clientSortingLine = new node_snap7_1.S7Client();
 let s7clientOven = new node_snap7_1.S7Client();
+let s7clientVacuumGripper = new node_snap7_1.S7Client();
 let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
 let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
+let isVacuumConnected = s7clientVacuumGripper.ConnectTo('192.168.0.4', 0, 1);
 if (!isSortingLineConnected)
     throw Error("Unable to connect to SortingLine!");
 if (!isOvenConnected)
     throw Error("Unable to connect to Oven!");
+if (!isVacuumConnected)
+    throw Error("Unable to connect to Vacuum Gripper!");
 let server = new node_opcua_1.OPCUAServer({
     nodeset_filename: node_opcua_1.nodesets.standard_nodeset_file,
     port: 4848,
@@ -34,6 +38,12 @@ function post_initialize() {
     let sortingLine = sortingLineBuilder.build();
     let ovenBuilder = new builder_1.OvenBuilder(s7clientOven, addressSpace, namespace);
     let oven = ovenBuilder.build();
+    let vacuumBuilder = new builder_1.VacuumGripperBuilder(s7clientVacuumGripper, addressSpace, namespace);
+    let vacuum = vacuumBuilder.build();
+    factory.addReference({
+        referenceType: "HasComponent",
+        nodeId: vacuum
+    });
     factory.addReference({
         referenceType: "HasComponent",
         nodeId: oven

@@ -1,16 +1,20 @@
 import { OPCUAServer, nodesets, OPCUACertificateManager, Variant, DataType } from "node-opcua";
 import { S7Client, Area, WordLen } from 'node-snap7';
 import path from "path";
-import { SortingLineBuilder, OvenBuilder } from "./builders/builder";
+import { SortingLineBuilder, OvenBuilder, VacuumGripperBuilder } from "./builders/builder";
 
 
 let s7clientSortingLine = new S7Client();
 let s7clientOven = new S7Client();
+let s7clientVacuumGripper = new S7Client();
+
 let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
 let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
+let isVacuumConnected = s7clientVacuumGripper.ConnectTo('192.168.0.4', 0, 1);
 
 if (!isSortingLineConnected) throw Error("Unable to connect to SortingLine!");
 if (!isOvenConnected) throw Error("Unable to connect to Oven!");
+if (!isVacuumConnected) throw Error("Unable to connect to Vacuum Gripper!");
 
 let server = new OPCUAServer({
     nodeset_filename: nodesets.standard_nodeset_file,
@@ -34,12 +38,18 @@ function post_initialize() {
     
 
     let sortingLineBuilder = new SortingLineBuilder(s7clientSortingLine, addressSpace, namespace);
-    let sortingLine = sortingLineBuilder.build();
-
-    
+    let sortingLine = sortingLineBuilder.build();    
     
     let ovenBuilder = new OvenBuilder(s7clientOven, addressSpace, namespace);
     let oven = ovenBuilder.build();
+    
+    let vacuumBuilder = new VacuumGripperBuilder(s7clientVacuumGripper, addressSpace, namespace);
+    let vacuum = vacuumBuilder.build();
+
+    factory.addReference({
+        referenceType: "HasComponent",
+        nodeId: vacuum
+    });
 
     factory.addReference({
         referenceType: "HasComponent",

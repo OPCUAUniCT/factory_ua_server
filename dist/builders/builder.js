@@ -34,4 +34,6 @@ var sortingLineBuilder_1 = require("./sortingLineBuilder");
 exports.SortingLineBuilder = sortingLineBuilder_1.SortingLineBuilder;
 var ovenBuilder_1 = require("./ovenBuilder");
 exports.OvenBuilder = ovenBuilder_1.OvenBuilder;
+var vacuumGripperBuilder_1 = require("./vacuumGripperBuilder");
+exports.VacuumGripperBuilder = vacuumGripperBuilder_1.VacuumGripperBuilder;
 //# sourceMappingURL=builder.js.map
