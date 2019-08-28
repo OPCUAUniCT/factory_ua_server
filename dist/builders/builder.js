@@ -22,6 +22,9 @@ class SystemBuilder {
                 case node_opcua_1.DataType.Int16:
                     value = val.readInt16BE(0);
                     break;
+                case node_opcua_1.DataType.Int32:
+                    value = val.readInt32BE(0);
+                    break;
                 default:
                     throw new Error("DataType not supported");
             }
@@ -36,4 +39,6 @@ var ovenBuilder_1 = require("./ovenBuilder");
 exports.OvenBuilder = ovenBuilder_1.OvenBuilder;
 var vacuumGripperBuilder_1 = require("./vacuumGripperBuilder");
 exports.VacuumGripperBuilder = vacuumGripperBuilder_1.VacuumGripperBuilder;
+var warehouseBuilder_1 = require("./warehouseBuilder");
+exports.WarehouseBuilder = warehouseBuilder_1.WarehouseBuilder;
 //# sourceMappingURL=builder.js.map

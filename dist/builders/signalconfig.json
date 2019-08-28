@@ -256,6 +256,13 @@
         }
     },
     "vacuumGripper": {
+        "start": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 1,
+            "amount": 1,
+            "wordLen": 1
+        },
         "referenceSwitchVerticalAxis": {
             "area": 132,
             "dbNumber": 1,
@@ -348,6 +355,134 @@
             "wordLen": 1
         },
         "valveVacuum": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 14,
+            "amount": 1,
+            "wordLen": 1
+        }
+    },
+    "warehouse": {
+        "referenceSwitchVerticalAxis": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 15,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchHorizontalAxis": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 16,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchCantileverFront": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 17,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "referenceSwitchCantileverBack": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 17,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "encoderVerticalAxisImpulse1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 4,
+            "amount": 1,
+            "wordLen": 6
+        },
+        "encoderHorizontalAxisImpulse1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 8,
+            "amount": 1,
+            "wordLen": 6
+        },
+        "trailSensor1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 12,
+            "amount": 1,
+            "wordLen": 6
+        },
+        "trailSensor2": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 12,
+            "amount": 1,
+            "wordLen": 6
+        },
+        "motorVerticalAxisUp": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 7,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorVerticalAxisDown": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 8,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorHorizontalToRack": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 9,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorHorizontalToConveyor": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 10,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorConveyorBeltForward": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 11,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorConveyorBeltBackward": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 12,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorCantileverForward": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 13,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "motorCantileverBackward": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 14,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierIinside": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 14,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "lightBarrierOutside": {
             "area": 132,
             "dbNumber": 1,
             "start": 14,

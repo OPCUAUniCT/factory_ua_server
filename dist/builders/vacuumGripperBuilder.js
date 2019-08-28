@@ -9,9 +9,9 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         this.get_ref_switch_vertical_axis = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchVerticalAxis);
         this.get_ref_switch_horizontal_axis = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchHorizontalAxis);
         this.get_ref_switch__rotate = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchRotate);
-        this.get_encoder_vertical_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.encoderVerticalAxisImpulse1);
-        this.get_encoder_horizontal_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.encoderHorizontalAxisImpulse1);
-        this.get_encoder_rotate_impulse_1 = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.encoderRotateImpulse1);
+        this.get_encoder_vertical_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderVerticalAxisImpulse1);
+        this.get_encoder_horizontal_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderHorizontalAxisImpulse1);
+        this.get_encoder_rotate_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderRotateImpulse1);
         this.get_motor_vertical_axis_up = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorVerticalAxisUp);
         this.get_motor_vertical_axis_down = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorVerticalAxisDown);
         this.get_motor_horizontal_axis_backward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorHorizontalAxisBackward);
@@ -22,12 +22,12 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         this.get_valve_vacuum = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.valveVacuum);
     }
     build() {
-        let vacuumgripper = this.nameSpace.addObject({
+        let vacuumGripperObject = this.nameSpace.addObject({
             browseName: "Vacuum Gripper",
         });
         this.nameSpace.addVariable({
             browseName: "Reference Switch Vertical Axis",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_ref_switch_vertical_axis
@@ -35,7 +35,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Reference Switch Horizontal Axis",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_ref_switch_horizontal_axis
@@ -43,7 +43,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Reference Switch Rotate",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_ref_switch__rotate
@@ -51,7 +51,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Encoder Vertical Axis Impulse 1",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_encoder_vertical_axis_impulse_1
@@ -59,7 +59,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Encoder Horizontal Axis Impulse 1",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_encoder_horizontal_axis_impulse_1
@@ -67,7 +67,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Encoder Rotate Impulse 1",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_encoder_rotate_impulse_1
@@ -75,7 +75,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Motor Vertical Axis Up",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_motor_vertical_axis_up
@@ -83,7 +83,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Motor Vertical Axis Down",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_motor_vertical_axis_down
@@ -91,7 +91,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Motor Horizontal Axis BackWard",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_motor_horizontal_axis_backward
@@ -99,7 +99,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Motor Horizontal Axis Forward",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_motor_horizontal_axis_forward
@@ -107,7 +107,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Motor Rotate Clockwise",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_motor_rotate_clockwise
@@ -115,7 +115,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Motor Rotate CounterClockwise",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_motor_rotate_counter_clockwise
@@ -123,7 +123,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Compressor",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_compressor
@@ -131,13 +131,59 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         });
         this.nameSpace.addVariable({
             browseName: "Valve Vacuum",
-            propertyOf: vacuumgripper,
+            propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
                 get: this.get_valve_vacuum
             }
         });
-        return vacuumgripper;
+        let startMethod = this.nameSpace.addMethod(vacuumGripperObject, {
+            browseName: "Start",
+            description: "Start Vacuum Gripper cycle",
+            inputArguments: [],
+            outputArguments: []
+        });
+        startMethod.bindMethod((inputArgs, context, callback) => {
+            this.s7client.WriteArea(signalconfig_json_1.vacuumGripper.start.area, signalconfig_json_1.vacuumGripper.start.dbNumber, signalconfig_json_1.vacuumGripper.start.start, signalconfig_json_1.vacuumGripper.start.amount, signalconfig_json_1.vacuumGripper.start.wordLen, Buffer.alloc(1, 1), (err) => {
+                let callMethodResult;
+                if (err) {
+                    console.log("Method Start Error" + err + " - " + this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: node_opcua_1.StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: node_opcua_1.StatusCodes.Good,
+                };
+                console.log("Method Start Executed");
+                return callback(null, callMethodResult);
+            });
+        });
+        let stopMethod = this.nameSpace.addMethod(vacuumGripperObject, {
+            browseName: "Stop",
+            description: "Stop Vacuum Gripper cycle",
+            inputArguments: [],
+            outputArguments: []
+        });
+        stopMethod.bindMethod((inputArgs, context, callback) => {
+            this.s7client.WriteArea(signalconfig_json_1.vacuumGripper.start.area, signalconfig_json_1.vacuumGripper.start.dbNumber, signalconfig_json_1.vacuumGripper.start.start, signalconfig_json_1.vacuumGripper.start.amount, signalconfig_json_1.vacuumGripper.start.wordLen, Buffer.alloc(1, 0), (err) => {
+                let callMethodResult;
+                if (err) {
+                    console.log("Method Stop Error" + err + " - " + this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: node_opcua_1.StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: node_opcua_1.StatusCodes.Good,
+                };
+                console.log("Method Stop Executed");
+                return callback(null, callMethodResult);
+            });
+        });
+        return vacuumGripperObject;
     }
 }
 exports.VacuumGripperBuilder = VacuumGripperBuilder;

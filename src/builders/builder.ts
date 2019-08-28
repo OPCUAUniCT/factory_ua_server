@@ -25,6 +25,9 @@ export abstract class SystemBuilder {
                     break;       
                 case DataType.Int16:
                     value = val.readInt16BE(0);
+                    break;
+                case DataType.Int32:
+                    value = val.readInt32BE(0);
                     break;              
                 default:
                     throw new Error("DataType not supported");
@@ -38,6 +41,8 @@ export abstract class SystemBuilder {
 export { SortingLineBuilder } from "./sortingLineBuilder";
 export { OvenBuilder } from "./ovenBuilder";
 export { VacuumGripperBuilder } from "./vacuumGripperBuilder";
+export { WarehouseBuilder } from "./warehouseBuilder";
+
 
 
 export type SignalConfigArgument = {

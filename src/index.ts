@@ -60,6 +60,7 @@ function post_initialize() {
         referenceType: "HasComponent",
         nodeId: sortingLine
     });
+    
 
     server.start(function () {
         console.log("Server is now listening ... ( press CTRL+C to stop)");
