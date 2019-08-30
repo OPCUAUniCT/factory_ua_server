@@ -6,6 +6,7 @@ class SystemBuilder {
         this.s7client = s7client;
         this.addressSpace = addressSpace;
         this.nameSpace = nameSpace;
+        this.fallback_reconnect(5000);
     }
     create_getter(dataType, config) {
         return () => {
@@ -30,6 +31,33 @@ class SystemBuilder {
             }
             return new node_opcua_1.Variant({ dataType, value });
         };
+    }
+    fallback_reconnect(interval) {
+        var cycle = 0;
+        var delay = interval;
+        let _backoff_connect = () => {
+            this.s7client.PlcStatus((err, _) => {
+                if (err) {
+                    console.log(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
+                    console.log(' >> trying to reconnect...');
+                    this.s7client.Connect((err) => {
+                        if (err) {
+                            if (cycle !== 5) {
+                                delay = interval + (Math.pow(2, cycle)) * 1000;
+                                cycle++;
+                            }
+                            return console.log(' >> Connection error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
+                        }
+                        cycle = 0;
+                        delay = interval;
+                        console.log(' >> connection recovered.');
+                    });
+                }
+                console.log('NEXT CHECK in ' + delay + ' ms...');
+                setTimeout(_backoff_connect, delay);
+            });
+        };
+        setTimeout(_backoff_connect, delay);
     }
 }
 exports.SystemBuilder = SystemBuilder;
