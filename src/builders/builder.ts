@@ -4,7 +4,7 @@ import { S7Client } from "node-snap7";
 
 export abstract class SystemBuilder {
 
-    constructor(protected s7client: S7Client, protected addressSpace: AddressSpace, protected nameSpace: Namespace) {
+    constructor(protected s7client: S7Client, protected addressSpace: AddressSpace, protected nameSpace: Namespace, public deviceName: string = "GenericDevice") {
         this.fallback_reconnect(5000);
     }
 
@@ -46,7 +46,7 @@ export abstract class SystemBuilder {
             this.s7client.PlcStatus((err, _) => {
                 if(err) {
                     console.log(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
-                    console.log(' >> trying to reconnect...');
+                    console.log(` >> trying to reconnect ${this.deviceName}...`);
                     this.s7client.Connect((err) => {
                         if(err) {
                             if (cycle !== 5){ 
@@ -60,7 +60,7 @@ export abstract class SystemBuilder {
                         console.log(' >> connection recovered.');
                     });
                 }
-                console.log('NEXT CHECK in ' + delay + ' ms...');
+                console.log(`NEXT CHECK for ${this.deviceName} in ${delay} ms...`);
                 setTimeout(_backoff_connect, delay);
             })
         }

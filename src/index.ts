@@ -12,9 +12,9 @@ let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
 let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
 let isVacuumConnected = s7clientVacuumGripper.ConnectTo('192.168.0.4', 0, 1);
 
-if (!isSortingLineConnected) throw Error("Unable to connect to SortingLine!");
-if (!isOvenConnected) throw Error("Unable to connect to Oven!");
-if (!isVacuumConnected) throw Error("Unable to connect to Vacuum Gripper!");
+//if (!isSortingLineConnected) throw Error("Unable to connect to SortingLine!");
+//if (!isOvenConnected) throw Error("Unable to connect to Oven!");
+//if (!isVacuumConnected) throw Error("Unable to connect to Vacuum Gripper!");
 
 let server = new OPCUAServer({
     nodeset_filename: nodesets.standard_nodeset_file,
@@ -37,13 +37,13 @@ function post_initialize() {
 
     
 
-    let sortingLineBuilder = new SortingLineBuilder(s7clientSortingLine, addressSpace, namespace);
+    let sortingLineBuilder = new SortingLineBuilder(s7clientSortingLine, addressSpace, namespace, "Sorting Line");
     let sortingLine = sortingLineBuilder.build();    
     
-    let ovenBuilder = new OvenBuilder(s7clientOven, addressSpace, namespace);
+    let ovenBuilder = new OvenBuilder(s7clientOven, addressSpace, namespace, "Oven");
     let oven = ovenBuilder.build();
     
-    let vacuumBuilder = new VacuumGripperBuilder(s7clientVacuumGripper, addressSpace, namespace);
+    let vacuumBuilder = new VacuumGripperBuilder(s7clientVacuumGripper, addressSpace, namespace, "Vacuum Gripper");
     let vacuum = vacuumBuilder.build();
 
     factory.addReference({

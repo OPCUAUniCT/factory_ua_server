@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_opcua_1 = require("node-opcua");
 class SystemBuilder {
-    constructor(s7client, addressSpace, nameSpace) {
+    constructor(s7client, addressSpace, nameSpace, deviceName = "GenericDevice") {
         this.s7client = s7client;
         this.addressSpace = addressSpace;
         this.nameSpace = nameSpace;
+        this.deviceName = deviceName;
         this.fallback_reconnect(5000);
     }
     create_getter(dataType, config) {
@@ -39,7 +40,7 @@ class SystemBuilder {
             this.s7client.PlcStatus((err, _) => {
                 if (err) {
                     console.log(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
-                    console.log(' >> trying to reconnect...');
+                    console.log(` >> trying to reconnect ${this.deviceName}...`);
                     this.s7client.Connect((err) => {
                         if (err) {
                             if (cycle !== 5) {
@@ -53,7 +54,7 @@ class SystemBuilder {
                         console.log(' >> connection recovered.');
                     });
                 }
-                console.log('NEXT CHECK in ' + delay + ' ms...');
+                console.log(`NEXT CHECK for ${this.deviceName} in ${delay} ms...`);
                 setTimeout(_backoff_connect, delay);
             });
         };
