@@ -6,20 +6,20 @@ const node_opcua_1 = require("node-opcua");
 class VacuumGripperBuilder extends builder_1.SystemBuilder {
     constructor() {
         super(...arguments);
-        this.get_ref_switch_vertical_axis = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchVerticalAxis);
-        this.get_ref_switch_horizontal_axis = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchHorizontalAxis);
-        this.get_ref_switch__rotate = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchRotate);
-        this.get_encoder_vertical_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderVerticalAxisImpulse1);
-        this.get_encoder_horizontal_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderHorizontalAxisImpulse1);
-        this.get_encoder_rotate_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderRotateImpulse1);
-        this.get_motor_vertical_axis_up = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorVerticalAxisUp);
-        this.get_motor_vertical_axis_down = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorVerticalAxisDown);
-        this.get_motor_horizontal_axis_backward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorHorizontalAxisBackward);
-        this.get_motor_horizontal_axis_forward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorHorizontalAxisForward);
-        this.get_motor_rotate_clockwise = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorRotateClockwise);
-        this.get_motor_rotate_counter_clockwise = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorRotateCounterClockwise);
-        this.get_compressor = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.compressor);
-        this.get_valve_vacuum = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.valveVacuum);
+        this.get_ref_switch_vertical_axis = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchVerticalAxis);
+        this.get_ref_switch_horizontal_axis = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchHorizontalAxis);
+        this.get_ref_switch__rotate = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.referenceSwitchRotate);
+        this.get_encoder_vertical_axis_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderVerticalAxisImpulse1);
+        this.get_encoder_horizontal_axis_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderHorizontalAxisImpulse1);
+        this.get_encoder_rotate_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.vacuumGripper.encoderRotateImpulse1);
+        this.get_motor_vertical_axis_up = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorVerticalAxisUp);
+        this.get_motor_vertical_axis_down = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorVerticalAxisDown);
+        this.get_motor_horizontal_axis_backward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorHorizontalAxisBackward);
+        this.get_motor_horizontal_axis_forward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorHorizontalAxisForward);
+        this.get_motor_rotate_clockwise = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorRotateClockwise);
+        this.get_motor_rotate_counter_clockwise = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.motorRotateCounterClockwise);
+        this.get_compressor = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.compressor);
+        this.get_valve_vacuum = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.vacuumGripper.valveVacuum);
     }
     build() {
         let vacuumGripperObject = this.nameSpace.addObject({
@@ -30,7 +30,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_vertical_axis
+                refreshFunc: this.get_ref_switch_vertical_axis
             }
         });
         this.nameSpace.addVariable({
@@ -38,7 +38,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_horizontal_axis
+                refreshFunc: this.get_ref_switch_horizontal_axis
             }
         });
         this.nameSpace.addVariable({
@@ -46,7 +46,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch__rotate
+                refreshFunc: this.get_ref_switch__rotate
             }
         });
         this.nameSpace.addVariable({
@@ -54,7 +54,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_vertical_axis_impulse_1
+                refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
         });
         this.nameSpace.addVariable({
@@ -62,7 +62,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_horizontal_axis_impulse_1
+                refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }
         });
         this.nameSpace.addVariable({
@@ -70,7 +70,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_rotate_impulse_1
+                refreshFunc: this.get_encoder_rotate_impulse_1
             }
         });
         this.nameSpace.addVariable({
@@ -78,7 +78,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_up
+                refreshFunc: this.get_motor_vertical_axis_up
             }
         });
         this.nameSpace.addVariable({
@@ -86,7 +86,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_down
+                refreshFunc: this.get_motor_vertical_axis_down
             }
         });
         this.nameSpace.addVariable({
@@ -94,7 +94,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_horizontal_axis_backward
+                refreshFunc: this.get_motor_horizontal_axis_backward
             }
         });
         this.nameSpace.addVariable({
@@ -102,7 +102,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_horizontal_axis_forward
+                refreshFunc: this.get_motor_horizontal_axis_forward
             }
         });
         this.nameSpace.addVariable({
@@ -110,7 +110,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_rotate_clockwise
+                refreshFunc: this.get_motor_rotate_clockwise
             }
         });
         this.nameSpace.addVariable({
@@ -118,7 +118,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_rotate_counter_clockwise
+                refreshFunc: this.get_motor_rotate_counter_clockwise
             }
         });
         this.nameSpace.addVariable({
@@ -126,7 +126,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_compressor
+                refreshFunc: this.get_compressor
             }
         });
         this.nameSpace.addVariable({
@@ -134,7 +134,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_vacuum
+                refreshFunc: this.get_valve_vacuum
             }
         });
         let startMethod = this.nameSpace.addMethod(vacuumGripperObject, {

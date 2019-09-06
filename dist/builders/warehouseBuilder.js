@@ -6,24 +6,24 @@ const node_opcua_1 = require("node-opcua");
 class WarehouseBuilder extends builder_1.SystemBuilder {
     constructor() {
         super(...arguments);
-        this.get_ref_switch_vertical_axis = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchVerticalAxis);
-        this.get_ref_switch_horizontal_axis = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchHorizontalAxis);
-        this.get_ref_switch_cantilever_front = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchCantileverFront);
-        this.get_ref_switch_cantilever_back = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchCantileverBack);
-        this.get_encoder_vertical_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.encoderVerticalAxisImpulse1);
-        this.get_encoder_horizontal_axis_impulse_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.encoderHorizontalAxisImpulse1);
-        this.get_lb_inside = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.lightBarrierIinside);
-        this.get_lb_outside = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.lightBarrierOutside);
-        this.get_motor_vertical_axis_up = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorVerticalAxisUp);
-        this.get_motor_vertical_axis_down = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorVerticalAxisDown);
-        this.get_motor_cantilever_forward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorCantileverForward);
-        this.get_motor_cantilever_backward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorCantileverBackward);
-        this.get_motor_cb_forward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorConveyorBeltForward);
-        this.get_motor_cb_backward = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorConveyorBeltBackward);
-        this.get_motor_towards_rack = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorHorizontalToRack);
-        this.get_motor_towards_conveyor = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorHorizontalToConveyor);
-        this.get_trail_sensor_1 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.trailSensor1);
-        this.get_trail_sensor_2 = this.create_getter(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.trailSensor2);
+        this.get_ref_switch_vertical_axis = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchVerticalAxis);
+        this.get_ref_switch_horizontal_axis = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchHorizontalAxis);
+        this.get_ref_switch_cantilever_front = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchCantileverFront);
+        this.get_ref_switch_cantilever_back = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchCantileverBack);
+        this.get_encoder_vertical_axis_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.encoderVerticalAxisImpulse1);
+        this.get_encoder_horizontal_axis_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.encoderHorizontalAxisImpulse1);
+        this.get_lb_inside = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.lightBarrierIinside);
+        this.get_lb_outside = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.lightBarrierOutside);
+        this.get_motor_vertical_axis_up = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorVerticalAxisUp);
+        this.get_motor_vertical_axis_down = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorVerticalAxisDown);
+        this.get_motor_cantilever_forward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorCantileverForward);
+        this.get_motor_cantilever_backward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorCantileverBackward);
+        this.get_motor_cb_forward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorConveyorBeltForward);
+        this.get_motor_cb_backward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorConveyorBeltBackward);
+        this.get_motor_towards_rack = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorHorizontalToRack);
+        this.get_motor_towards_conveyor = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorHorizontalToConveyor);
+        this.get_trail_sensor_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.trailSensor1);
+        this.get_trail_sensor_2 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.trailSensor2);
     }
     build() {
         let warehouse = this.nameSpace.addObject({
@@ -34,7 +34,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_vertical_axis
+                refreshFunc: this.get_ref_switch_vertical_axis
             }
         });
         this.nameSpace.addVariable({
@@ -42,7 +42,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_horizontal_axis
+                refreshFunc: this.get_ref_switch_horizontal_axis
             }
         });
         this.nameSpace.addVariable({
@@ -50,7 +50,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_inside
+                refreshFunc: this.get_lb_inside
             }
         });
         this.nameSpace.addVariable({
@@ -58,7 +58,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_outside
+                refreshFunc: this.get_lb_outside
             }
         });
         this.nameSpace.addVariable({
@@ -66,7 +66,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_vertical_axis_impulse_1
+                refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
         });
         this.nameSpace.addVariable({
@@ -74,7 +74,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_horizontal_axis_impulse_1
+                refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }
         });
         this.nameSpace.addVariable({
@@ -82,7 +82,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_trail_sensor_1
+                refreshFunc: this.get_trail_sensor_1
             }
         });
         this.nameSpace.addVariable({
@@ -90,7 +90,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_trail_sensor_2
+                refreshFunc: this.get_trail_sensor_2
             }
         });
         this.nameSpace.addVariable({
@@ -98,7 +98,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_up
+                refreshFunc: this.get_motor_vertical_axis_up
             }
         });
         this.nameSpace.addVariable({
@@ -106,7 +106,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_down
+                refreshFunc: this.get_motor_vertical_axis_down
             }
         });
         this.nameSpace.addVariable({
@@ -114,7 +114,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_towards_rack
+                refreshFunc: this.get_motor_towards_rack
             }
         });
         this.nameSpace.addVariable({
@@ -122,7 +122,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_towards_conveyor
+                refreshFunc: this.get_motor_towards_conveyor
             }
         });
         this.nameSpace.addVariable({
@@ -130,7 +130,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cantilever_forward
+                refreshFunc: this.get_motor_cantilever_forward
             }
         });
         this.nameSpace.addVariable({
@@ -138,7 +138,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cantilever_backward
+                refreshFunc: this.get_motor_cantilever_backward
             }
         });
         this.nameSpace.addVariable({
@@ -146,7 +146,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cb_forward
+                refreshFunc: this.get_motor_cb_forward
             }
         });
         this.nameSpace.addVariable({
@@ -154,7 +154,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cb_backward
+                refreshFunc: this.get_motor_cb_backward
             }
         });
         this.nameSpace.addVariable({
@@ -162,7 +162,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_cantilever_front
+                refreshFunc: this.get_ref_switch_cantilever_front
             }
         });
         this.nameSpace.addVariable({
@@ -170,7 +170,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_cantilever_front
+                refreshFunc: this.get_ref_switch_cantilever_front
             }
         });
         this.nameSpace.addVariable({
@@ -178,7 +178,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_cantilever_back
+                refreshFunc: this.get_ref_switch_cantilever_back
             }
         });
         return warehouse;

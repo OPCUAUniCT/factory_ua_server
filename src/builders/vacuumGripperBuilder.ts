@@ -17,7 +17,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_vertical_axis
+                refreshFunc: this.get_ref_switch_vertical_axis
             }
         });
         
@@ -26,7 +26,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_horizontal_axis
+                refreshFunc: this.get_ref_switch_horizontal_axis
             }
         });
 
@@ -35,7 +35,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch__rotate
+                refreshFunc: this.get_ref_switch__rotate
             }
         });
 
@@ -44,7 +44,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_vertical_axis_impulse_1
+                refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
         });
 
@@ -53,7 +53,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_horizontal_axis_impulse_1
+                refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }
         });
 
@@ -62,7 +62,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_rotate_impulse_1
+                refreshFunc: this.get_encoder_rotate_impulse_1
             }
         });
 
@@ -71,7 +71,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_up
+                refreshFunc: this.get_motor_vertical_axis_up
             }
         });
 
@@ -80,7 +80,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_down
+                refreshFunc: this.get_motor_vertical_axis_down
             }
         });
 
@@ -89,7 +89,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_horizontal_axis_backward
+                refreshFunc: this.get_motor_horizontal_axis_backward
             }
         });
 
@@ -98,7 +98,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_horizontal_axis_forward
+                refreshFunc: this.get_motor_horizontal_axis_forward
             }
         });
 
@@ -107,7 +107,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_rotate_clockwise
+                refreshFunc: this.get_motor_rotate_clockwise
             }
         });
 
@@ -116,7 +116,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_rotate_counter_clockwise
+                refreshFunc: this.get_motor_rotate_counter_clockwise
             }
         });
 
@@ -125,7 +125,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_compressor
+                refreshFunc: this.get_compressor
             }
         });
 
@@ -134,7 +134,7 @@ export class VacuumGripperBuilder extends SystemBuilder{
             propertyOf: vacuumGripperObject,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_vacuum
+                refreshFunc: this.get_valve_vacuum
             }
         });
 
@@ -193,20 +193,20 @@ export class VacuumGripperBuilder extends SystemBuilder{
         return vacuumGripperObject;
     }
 
-    private get_ref_switch_vertical_axis = this.create_getter(DataType.Boolean, vacuumGripper.referenceSwitchVerticalAxis);    
-    private get_ref_switch_horizontal_axis = this.create_getter(DataType.Boolean, vacuumGripper.referenceSwitchHorizontalAxis);    
-    private get_ref_switch__rotate = this.create_getter(DataType.Boolean, vacuumGripper.referenceSwitchRotate);    
-    private get_encoder_vertical_axis_impulse_1 = this.create_getter(DataType.Int32, vacuumGripper.encoderVerticalAxisImpulse1);    
-    private get_encoder_horizontal_axis_impulse_1 = this.create_getter(DataType.Int32, vacuumGripper.encoderHorizontalAxisImpulse1);    
-    private get_encoder_rotate_impulse_1 = this.create_getter(DataType.Int32, vacuumGripper.encoderRotateImpulse1);    
-    private get_motor_vertical_axis_up = this.create_getter(DataType.Boolean, vacuumGripper.motorVerticalAxisUp);    
-    private get_motor_vertical_axis_down = this.create_getter(DataType.Boolean, vacuumGripper.motorVerticalAxisDown);    
-    private get_motor_horizontal_axis_backward = this.create_getter(DataType.Boolean, vacuumGripper.motorHorizontalAxisBackward);    
-    private get_motor_horizontal_axis_forward = this.create_getter(DataType.Boolean, vacuumGripper.motorHorizontalAxisForward);    
-    private get_motor_rotate_clockwise = this.create_getter(DataType.Boolean, vacuumGripper.motorRotateClockwise);    
-    private get_motor_rotate_counter_clockwise = this.create_getter(DataType.Boolean, vacuumGripper.motorRotateCounterClockwise);    
-    private get_compressor = this.create_getter(DataType.Boolean, vacuumGripper.compressor);    
-    private get_valve_vacuum = this.create_getter(DataType.Boolean, vacuumGripper.valveVacuum);    
+    private get_ref_switch_vertical_axis = this.create_refreshFunc(DataType.Boolean, vacuumGripper.referenceSwitchVerticalAxis);    
+    private get_ref_switch_horizontal_axis = this.create_refreshFunc(DataType.Boolean, vacuumGripper.referenceSwitchHorizontalAxis);    
+    private get_ref_switch__rotate = this.create_refreshFunc(DataType.Boolean, vacuumGripper.referenceSwitchRotate);    
+    private get_encoder_vertical_axis_impulse_1 = this.create_refreshFunc(DataType.Int32, vacuumGripper.encoderVerticalAxisImpulse1);    
+    private get_encoder_horizontal_axis_impulse_1 = this.create_refreshFunc(DataType.Int32, vacuumGripper.encoderHorizontalAxisImpulse1);    
+    private get_encoder_rotate_impulse_1 = this.create_refreshFunc(DataType.Int32, vacuumGripper.encoderRotateImpulse1);    
+    private get_motor_vertical_axis_up = this.create_refreshFunc(DataType.Boolean, vacuumGripper.motorVerticalAxisUp);    
+    private get_motor_vertical_axis_down = this.create_refreshFunc(DataType.Boolean, vacuumGripper.motorVerticalAxisDown);    
+    private get_motor_horizontal_axis_backward = this.create_refreshFunc(DataType.Boolean, vacuumGripper.motorHorizontalAxisBackward);    
+    private get_motor_horizontal_axis_forward = this.create_refreshFunc(DataType.Boolean, vacuumGripper.motorHorizontalAxisForward);    
+    private get_motor_rotate_clockwise = this.create_refreshFunc(DataType.Boolean, vacuumGripper.motorRotateClockwise);    
+    private get_motor_rotate_counter_clockwise = this.create_refreshFunc(DataType.Boolean, vacuumGripper.motorRotateCounterClockwise);    
+    private get_compressor = this.create_refreshFunc(DataType.Boolean, vacuumGripper.compressor);    
+    private get_valve_vacuum = this.create_refreshFunc(DataType.Boolean, vacuumGripper.valveVacuum);    
     
 
 

@@ -16,7 +16,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_vertical_axis
+                refreshFunc: this.get_ref_switch_vertical_axis
             }
         });
         
@@ -25,7 +25,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_horizontal_axis
+                refreshFunc: this.get_ref_switch_horizontal_axis
             }
         });
 
@@ -34,7 +34,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_inside
+                refreshFunc: this.get_lb_inside
             }
         });
         this.nameSpace.addVariable({
@@ -42,7 +42,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_outside
+                refreshFunc: this.get_lb_outside
             }
         });
 
@@ -51,7 +51,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_vertical_axis_impulse_1
+                refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
         });
 
@@ -60,7 +60,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_encoder_horizontal_axis_impulse_1
+                refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }
         });
 
@@ -69,7 +69,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_trail_sensor_1
+                refreshFunc: this.get_trail_sensor_1
             }
         });
 
@@ -78,7 +78,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_trail_sensor_2
+                refreshFunc: this.get_trail_sensor_2
             }
         });
 
@@ -87,7 +87,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_up
+                refreshFunc: this.get_motor_vertical_axis_up
             }
         });
 
@@ -96,7 +96,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vertical_axis_down
+                refreshFunc: this.get_motor_vertical_axis_down
             }
         });
 
@@ -105,7 +105,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_towards_rack
+                refreshFunc: this.get_motor_towards_rack
             }
         });
 
@@ -114,7 +114,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_towards_conveyor
+                refreshFunc: this.get_motor_towards_conveyor
             }
         });
 
@@ -123,7 +123,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cantilever_forward
+                refreshFunc: this.get_motor_cantilever_forward
             }
         });
 
@@ -132,7 +132,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cantilever_backward
+                refreshFunc: this.get_motor_cantilever_backward
             }
         });
 
@@ -141,7 +141,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cb_forward
+                refreshFunc: this.get_motor_cb_forward
             }
         });
 
@@ -150,7 +150,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_cb_backward
+                refreshFunc: this.get_motor_cb_backward
             }
         });
 
@@ -159,7 +159,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_cantilever_front
+                refreshFunc: this.get_ref_switch_cantilever_front
             }
         });
         this.nameSpace.addVariable({
@@ -167,7 +167,7 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_cantilever_front
+                refreshFunc: this.get_ref_switch_cantilever_front
             }
         });
 
@@ -176,31 +176,31 @@ export class WarehouseBuilder extends SystemBuilder{
             propertyOf: warehouse,
             dataType: "Boolean",
             value: {
-                get: this.get_ref_switch_cantilever_back
+                refreshFunc: this.get_ref_switch_cantilever_back
             }
         });
 
         return warehouse;
     }
 
-    private get_ref_switch_vertical_axis = this.create_getter(DataType.Boolean, warehouse.referenceSwitchVerticalAxis);    
-    private get_ref_switch_horizontal_axis = this.create_getter(DataType.Boolean, warehouse.referenceSwitchHorizontalAxis);    
-    private get_ref_switch_cantilever_front = this.create_getter(DataType.Boolean, warehouse.referenceSwitchCantileverFront);
-    private get_ref_switch_cantilever_back = this.create_getter(DataType.Boolean, warehouse.referenceSwitchCantileverBack);    
-    private get_encoder_vertical_axis_impulse_1 = this.create_getter(DataType.Int32, warehouse.encoderVerticalAxisImpulse1);    
-    private get_encoder_horizontal_axis_impulse_1 = this.create_getter(DataType.Int32, warehouse.encoderHorizontalAxisImpulse1);    
-    private get_lb_inside = this.create_getter(DataType.Int32, warehouse.lightBarrierIinside);
-    private get_lb_outside = this.create_getter(DataType.Int32, warehouse.lightBarrierOutside);    
-    private get_motor_vertical_axis_up = this.create_getter(DataType.Boolean, warehouse.motorVerticalAxisUp);    
-    private get_motor_vertical_axis_down = this.create_getter(DataType.Boolean, warehouse.motorVerticalAxisDown);    
-    private get_motor_cantilever_forward = this.create_getter(DataType.Boolean, warehouse.motorCantileverForward);    
-    private get_motor_cantilever_backward = this.create_getter(DataType.Boolean, warehouse.motorCantileverBackward);    
-    private get_motor_cb_forward = this.create_getter(DataType.Boolean, warehouse.motorConveyorBeltForward);    
-    private get_motor_cb_backward = this.create_getter(DataType.Boolean, warehouse.motorConveyorBeltBackward);    
-    private get_motor_towards_rack = this.create_getter(DataType.Boolean, warehouse.motorHorizontalToRack);    
-    private get_motor_towards_conveyor = this.create_getter(DataType.Boolean, warehouse.motorHorizontalToConveyor);
-    private get_trail_sensor_1 = this.create_getter(DataType.Int32, warehouse.trailSensor1);    
-    private get_trail_sensor_2 = this.create_getter(DataType.Int32, warehouse.trailSensor2);
+    private get_ref_switch_vertical_axis = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchVerticalAxis);    
+    private get_ref_switch_horizontal_axis = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchHorizontalAxis);    
+    private get_ref_switch_cantilever_front = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchCantileverFront);
+    private get_ref_switch_cantilever_back = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchCantileverBack);    
+    private get_encoder_vertical_axis_impulse_1 = this.create_refreshFunc(DataType.Int32, warehouse.encoderVerticalAxisImpulse1);    
+    private get_encoder_horizontal_axis_impulse_1 = this.create_refreshFunc(DataType.Int32, warehouse.encoderHorizontalAxisImpulse1);    
+    private get_lb_inside = this.create_refreshFunc(DataType.Int32, warehouse.lightBarrierIinside);
+    private get_lb_outside = this.create_refreshFunc(DataType.Int32, warehouse.lightBarrierOutside);    
+    private get_motor_vertical_axis_up = this.create_refreshFunc(DataType.Boolean, warehouse.motorVerticalAxisUp);    
+    private get_motor_vertical_axis_down = this.create_refreshFunc(DataType.Boolean, warehouse.motorVerticalAxisDown);    
+    private get_motor_cantilever_forward = this.create_refreshFunc(DataType.Boolean, warehouse.motorCantileverForward);    
+    private get_motor_cantilever_backward = this.create_refreshFunc(DataType.Boolean, warehouse.motorCantileverBackward);    
+    private get_motor_cb_forward = this.create_refreshFunc(DataType.Boolean, warehouse.motorConveyorBeltForward);    
+    private get_motor_cb_backward = this.create_refreshFunc(DataType.Boolean, warehouse.motorConveyorBeltBackward);    
+    private get_motor_towards_rack = this.create_refreshFunc(DataType.Boolean, warehouse.motorHorizontalToRack);    
+    private get_motor_towards_conveyor = this.create_refreshFunc(DataType.Boolean, warehouse.motorHorizontalToConveyor);
+    private get_trail_sensor_1 = this.create_refreshFunc(DataType.Int32, warehouse.trailSensor1);    
+    private get_trail_sensor_2 = this.create_refreshFunc(DataType.Int32, warehouse.trailSensor2);
     
 
 

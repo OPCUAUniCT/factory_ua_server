@@ -6,29 +6,29 @@ const node_opcua_1 = require("node-opcua");
 class OvenBuilder extends builder_1.SystemBuilder {
     constructor() {
         super(...arguments);
-        this.get_motor_turn_table_clockwise = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorTurnTableClockWise);
-        this.get_motor_turn_table_counterclockwise = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorTurnTableCounterClockWise);
-        this.get_conveyor_belt = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.conveyorBelt);
-        this.get_motor_saw = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorSaw);
-        this.get_motor_oven_retract = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorOvenRetract);
-        this.get_motor_oven_extend = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorOvenExtend);
-        this.get_motor_vacuum_left = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorVacuumLeft);
-        this.get_motor_vacuum_right = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorVacuumRight);
-        this.get_light_oven = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.lightOven);
-        this.get_compressor = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.compressor);
-        this.get_valve_vacuum = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveVacuum);
-        this.get_valve_lowering = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveLowering);
-        this.get_valve_oven_door = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveOvenDoor);
-        this.get_valve_feeder = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveFeeder);
-        this.get_reference_switch_tt_belt = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchTurnTableBelt);
-        this.get_reference_switch_tt_saw = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchTurnTableSaw);
-        this.get_reference_switch_tt_vacuum = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchTurnTableVacuum);
-        this.get_reference_switch_vacuum_left = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchVacuumLeft);
-        this.get_reference_switch_vacuum_right = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchVacuumRight);
-        this.get_reference_switch_oven_in = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchOvenIn);
-        this.get_reference_switch_oven_out = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchOvenOut);
-        this.get_light_barrier_oven = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.lightBarrierOven);
-        this.get_light_barrier_conveyor = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.lightBarrierConveyor);
+        this.get_motor_turn_table_clockwise = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorTurnTableClockWise);
+        this.get_motor_turn_table_counterclockwise = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorTurnTableCounterClockWise);
+        this.get_conveyor_belt = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.conveyorBelt);
+        this.get_motor_saw = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorSaw);
+        this.get_motor_oven_retract = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorOvenRetract);
+        this.get_motor_oven_extend = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorOvenExtend);
+        this.get_motor_vacuum_left = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorVacuumLeft);
+        this.get_motor_vacuum_right = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.motorVacuumRight);
+        this.get_light_oven = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.lightOven);
+        this.get_compressor = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.compressor);
+        this.get_valve_vacuum = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveVacuum);
+        this.get_valve_lowering = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveLowering);
+        this.get_valve_oven_door = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveOvenDoor);
+        this.get_valve_feeder = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.valveFeeder);
+        this.get_reference_switch_tt_belt = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchTurnTableBelt);
+        this.get_reference_switch_tt_saw = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchTurnTableSaw);
+        this.get_reference_switch_tt_vacuum = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchTurnTableVacuum);
+        this.get_reference_switch_vacuum_left = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchVacuumLeft);
+        this.get_reference_switch_vacuum_right = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchVacuumRight);
+        this.get_reference_switch_oven_in = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchOvenIn);
+        this.get_reference_switch_oven_out = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.referenceSwitchOvenOut);
+        this.get_light_barrier_oven = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.lightBarrierOven);
+        this.get_light_barrier_conveyor = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.oven.lightBarrierConveyor);
     }
     build() {
         let oven = this.nameSpace.addObject({
@@ -39,7 +39,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_turn_table_clockwise
+                refreshFunc: this.get_motor_turn_table_clockwise
             }
         });
         this.nameSpace.addVariable({
@@ -47,7 +47,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_turn_table_counterclockwise
+                refreshFunc: this.get_motor_turn_table_counterclockwise
             }
         });
         this.nameSpace.addVariable({
@@ -55,7 +55,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_conveyor_belt
+                refreshFunc: this.get_conveyor_belt
             }
         });
         this.nameSpace.addVariable({
@@ -63,7 +63,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_saw
+                refreshFunc: this.get_motor_saw
             }
         });
         this.nameSpace.addVariable({
@@ -71,7 +71,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_compressor
+                refreshFunc: this.get_compressor
             }
         });
         this.nameSpace.addVariable({
@@ -79,7 +79,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_oven_retract
+                refreshFunc: this.get_motor_oven_retract
             }
         });
         this.nameSpace.addVariable({
@@ -87,7 +87,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_oven_extend
+                refreshFunc: this.get_motor_oven_extend
             }
         });
         this.nameSpace.addVariable({
@@ -95,7 +95,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vacuum_left
+                refreshFunc: this.get_motor_vacuum_left
             }
         });
         this.nameSpace.addVariable({
@@ -103,7 +103,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_vacuum_right
+                refreshFunc: this.get_motor_vacuum_right
             }
         });
         this.nameSpace.addVariable({
@@ -111,7 +111,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_light_oven
+                refreshFunc: this.get_light_oven
             }
         });
         this.nameSpace.addVariable({
@@ -119,7 +119,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_vacuum
+                refreshFunc: this.get_valve_vacuum
             }
         });
         this.nameSpace.addVariable({
@@ -127,7 +127,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_lowering
+                refreshFunc: this.get_valve_lowering
             }
         });
         this.nameSpace.addVariable({
@@ -135,7 +135,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Int16",
             value: {
-                get: this.get_valve_oven_door
+                refreshFunc: this.get_valve_oven_door
             }
         });
         this.nameSpace.addVariable({
@@ -143,7 +143,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_feeder
+                refreshFunc: this.get_valve_feeder
             }
         });
         this.nameSpace.addVariable({
@@ -151,7 +151,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_tt_belt
+                refreshFunc: this.get_reference_switch_tt_belt
             }
         });
         this.nameSpace.addVariable({
@@ -159,7 +159,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_tt_saw
+                refreshFunc: this.get_reference_switch_tt_saw
             }
         });
         this.nameSpace.addVariable({
@@ -167,7 +167,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_tt_vacuum
+                refreshFunc: this.get_reference_switch_tt_vacuum
             }
         });
         this.nameSpace.addVariable({
@@ -175,7 +175,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_vacuum_left
+                refreshFunc: this.get_reference_switch_vacuum_left
             }
         });
         this.nameSpace.addVariable({
@@ -183,7 +183,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_vacuum_right
+                refreshFunc: this.get_reference_switch_vacuum_right
             }
         });
         this.nameSpace.addVariable({
@@ -191,7 +191,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_oven_in
+                refreshFunc: this.get_reference_switch_oven_in
             }
         });
         this.nameSpace.addVariable({
@@ -199,7 +199,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_reference_switch_oven_out
+                refreshFunc: this.get_reference_switch_oven_out
             }
         });
         this.nameSpace.addVariable({
@@ -207,7 +207,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_light_barrier_oven
+                refreshFunc: this.get_light_barrier_oven
             }
         });
         this.nameSpace.addVariable({
@@ -215,7 +215,7 @@ class OvenBuilder extends builder_1.SystemBuilder {
             propertyOf: oven,
             dataType: "Boolean",
             value: {
-                get: this.get_light_barrier_conveyor
+                refreshFunc: this.get_light_barrier_conveyor
             }
         });
         return oven;

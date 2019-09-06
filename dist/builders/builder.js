@@ -33,28 +33,101 @@ class SystemBuilder {
             return new node_opcua_1.Variant({ dataType, value });
         };
     }
+    create_timestamped_get(dataType, config) {
+        let lastDataValue;
+        let _value_polling = () => {
+            const { area, dbNumber, start, amount, wordLen } = config;
+            this.s7client.ReadArea(area, dbNumber, start, amount, wordLen, (err, val) => {
+                if (err != null) {
+                    return lastDataValue = new node_opcua_1.DataValue({ statusCode: node_opcua_1.StatusCodes.BadNotReadable });
+                }
+                let value;
+                switch (dataType) {
+                    case node_opcua_1.DataType.Boolean:
+                        value = val[0] !== 0;
+                        break;
+                    case node_opcua_1.DataType.Int16:
+                        value = val.readInt16BE(0);
+                        break;
+                    case node_opcua_1.DataType.Int32:
+                        value = val.readInt32BE(0);
+                        break;
+                    default:
+                        throw new Error("DataType not supported");
+                }
+                let dataValue = new node_opcua_1.DataValue({
+                    value: new node_opcua_1.Variant({ dataType: dataType, value: value }),
+                    statusCode: node_opcua_1.StatusCodes.Good,
+                    sourceTimestamp: new Date()
+                });
+                if (lastDataValue == null)
+                    lastDataValue = dataValue;
+                else if (lastDataValue.value.value !== dataValue.value.value)
+                    lastDataValue = dataValue;
+            });
+        };
+        setInterval(_value_polling, 150);
+        return (callback) => {
+            callback(null, lastDataValue);
+        };
+    }
+    create_refreshFunc(dataType, config) {
+        let lastDataValue;
+        return (callback) => {
+            const { area, dbNumber, start, amount, wordLen } = config;
+            this.s7client.ReadArea(area, dbNumber, start, amount, wordLen, (err, val) => {
+                if (err != null) {
+                    return callback(null, node_opcua_1.StatusCodes.BadNotReadable);
+                }
+                let value;
+                switch (dataType) {
+                    case node_opcua_1.DataType.Boolean:
+                        value = val[0] !== 0;
+                        break;
+                    case node_opcua_1.DataType.Int16:
+                        value = val.readInt16BE(0);
+                        break;
+                    case node_opcua_1.DataType.Int32:
+                        value = val.readInt32BE(0);
+                        break;
+                    default:
+                        throw new Error("DataType not supported");
+                }
+                let dataValue = new node_opcua_1.DataValue({
+                    value: new node_opcua_1.Variant({ dataType: dataType, value: value }),
+                    statusCode: node_opcua_1.StatusCodes.Good,
+                    sourceTimestamp: new Date()
+                });
+                if (lastDataValue == null)
+                    lastDataValue = dataValue;
+                else if (lastDataValue.value.value !== dataValue.value.value)
+                    lastDataValue = dataValue;
+                callback(null, lastDataValue);
+            });
+        };
+    }
     fallback_reconnect(interval) {
         var cycle = 0;
         var delay = interval;
         let _backoff_connect = () => {
             this.s7client.PlcStatus((err, _) => {
                 if (err) {
-                    console.log(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
-                    console.log(` >> trying to reconnect ${this.deviceName}...`);
+                    process.stdout.write(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
+                    process.stdout.write(` >> trying to reconnect ${this.deviceName}...`);
                     this.s7client.Connect((err) => {
                         if (err) {
                             if (cycle !== 5) {
                                 delay = interval + (Math.pow(2, cycle)) * 1000;
                                 cycle++;
                             }
-                            return console.log(' >> Connection error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
+                            return process.stdout.write(' >> Connection error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
                         }
                         cycle = 0;
                         delay = interval;
                         console.log(' >> connection recovered.');
                     });
                 }
-                console.log(`NEXT CHECK for ${this.deviceName} in ${delay} ms...`);
+                process.stdout.write(`NEXT CHECK for ${this.deviceName} in ${delay} ms...`);
                 setTimeout(_backoff_connect, delay);
             });
         };

@@ -6,19 +6,19 @@ const signalconfig_json_1 = require("./signalconfig.json");
 class SortingLineBuilder extends builder_1.SystemBuilder {
     constructor() {
         super(...arguments);
-        this.get_pulse_counter = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.pulseCounter);
-        this.get_lb_inlet = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierInlet);
-        this.get_lb_behind = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierBehind);
-        this.get_motor_conveyor_belt = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.motorConveyorBelt);
-        this.get_compressor = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.compressor);
-        this.get_valve_ejector1 = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.valveEjector1);
-        this.get_valve_ejector2 = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.valveEjector2);
-        this.get_valve_ejector3 = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.valveEjector3);
-        this.get_counter = this.create_getter(node_opcua_1.DataType.Int16, signalconfig_json_1.sortingLine.counter);
-        this.get_lb_white = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierWhite);
-        this.get_lb_red = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierRed);
-        this.get_lb_blue = this.create_getter(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierBlue);
-        this.get_color_sensor = this.create_getter(node_opcua_1.DataType.Int16, signalconfig_json_1.sortingLine.colorSensor);
+        this.get_pulse_counter = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.pulseCounter);
+        this.get_lb_inlet = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierInlet);
+        this.get_lb_behind = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierBehind);
+        this.get_motor_conveyor_belt = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.motorConveyorBelt);
+        this.get_compressor = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.compressor);
+        this.get_valve_ejector1 = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.valveEjector1);
+        this.get_valve_ejector2 = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.valveEjector2);
+        this.get_valve_ejector3 = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.valveEjector3);
+        this.get_counter = this.create_refreshFunc(node_opcua_1.DataType.Int16, signalconfig_json_1.sortingLine.counter);
+        this.get_lb_white = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierWhite);
+        this.get_lb_red = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierRed);
+        this.get_lb_blue = this.create_timestamped_get(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierBlue);
+        this.get_color_sensor = this.create_refreshFunc(node_opcua_1.DataType.Int16, signalconfig_json_1.sortingLine.colorSensor);
     }
     build() {
         let sortingline = this.nameSpace.addObject({
@@ -29,7 +29,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_pulse_counter
+                refreshFunc: this.get_pulse_counter
             }
         });
         this.nameSpace.addVariable({
@@ -37,7 +37,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_inlet
+                refreshFunc: this.get_lb_inlet
             }
         });
         this.nameSpace.addVariable({
@@ -45,7 +45,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_behind
+                refreshFunc: this.get_lb_behind
             }
         });
         this.nameSpace.addVariable({
@@ -53,7 +53,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_motor_conveyor_belt
+                refreshFunc: this.get_motor_conveyor_belt
             }
         });
         this.nameSpace.addVariable({
@@ -61,7 +61,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_compressor
+                refreshFunc: this.get_compressor
             }
         });
         this.nameSpace.addVariable({
@@ -69,7 +69,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_ejector1
+                refreshFunc: this.get_valve_ejector1
             }
         });
         this.nameSpace.addVariable({
@@ -77,7 +77,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_ejector2
+                refreshFunc: this.get_valve_ejector2
             }
         });
         this.nameSpace.addVariable({
@@ -85,7 +85,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_valve_ejector3
+                refreshFunc: this.get_valve_ejector3
             }
         });
         this.nameSpace.addVariable({
@@ -93,7 +93,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Int16",
             value: {
-                get: this.get_counter
+                refreshFunc: this.get_counter
             }
         });
         this.nameSpace.addVariable({
@@ -101,7 +101,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_white
+                refreshFunc: this.get_lb_white
             }
         });
         this.nameSpace.addVariable({
@@ -109,7 +109,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_red
+                refreshFunc: this.get_lb_red
             }
         });
         this.nameSpace.addVariable({
@@ -117,7 +117,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Boolean",
             value: {
-                get: this.get_lb_blue
+                timestamped_get: this.get_lb_blue
             }
         });
         this.nameSpace.addVariable({
@@ -125,7 +125,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             propertyOf: sortingline,
             dataType: "Int16",
             value: {
-                get: this.get_color_sensor
+                refreshFunc: this.get_color_sensor
             }
         });
         return sortingline;
