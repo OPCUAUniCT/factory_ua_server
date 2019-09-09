@@ -112,22 +112,21 @@ class SystemBuilder {
         let _backoff_connect = () => {
             this.s7client.PlcStatus((err, _) => {
                 if (err) {
-                    process.stdout.write(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
-                    process.stdout.write(` >> trying to reconnect ${this.deviceName}...`);
+                    //console.log(' >> PLC Status error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
+                    console.log(` >> Connection error for ${this.deviceName}. Trying to reconnect ${this.deviceName}...`);
                     this.s7client.Connect((err) => {
                         if (err) {
                             if (cycle !== 5) {
                                 delay = interval + (Math.pow(2, cycle)) * 1000;
                                 cycle++;
                             }
-                            return process.stdout.write(' >> Connection error. Code #' + err + ' - ' + this.s7client.ErrorText(err));
+                            return;
                         }
                         cycle = 0;
                         delay = interval;
-                        console.log(' >> connection recovered.');
+                        console.log(` >> Connection recovered for ${this.deviceName}.`);
                     });
                 }
-                process.stdout.write(`NEXT CHECK for ${this.deviceName} in ${delay} ms...`);
                 setTimeout(_backoff_connect, delay);
             });
         };

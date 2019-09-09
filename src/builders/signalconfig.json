@@ -365,6 +365,13 @@
 
     },
     "warehouse": {
+        "home": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 0,
+            "amount": 1,
+            "wordLen": 1
+        },
         "referenceSwitchVerticalAxis": {
             "area": 132,
             "dbNumber": 1,

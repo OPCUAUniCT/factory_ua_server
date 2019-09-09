@@ -12,6 +12,15 @@ export class WarehouseBuilder extends SystemBuilder{
         });
 
         this.nameSpace.addVariable({
+            browseName: "Home",
+            propertyOf: warehouse,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_home
+            }
+        });
+
+        this.nameSpace.addVariable({
             browseName: "Reference Switch Vertical Axis",
             propertyOf: warehouse,
             dataType: "Boolean",
@@ -183,6 +192,7 @@ export class WarehouseBuilder extends SystemBuilder{
         return warehouse;
     }
 
+    private get_home = this.create_refreshFunc(DataType.Boolean, warehouse.home);
     private get_ref_switch_vertical_axis = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchVerticalAxis);    
     private get_ref_switch_horizontal_axis = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchHorizontalAxis);    
     private get_ref_switch_cantilever_front = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchCantileverFront);
