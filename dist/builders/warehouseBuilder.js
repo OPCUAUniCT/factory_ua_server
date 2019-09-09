@@ -6,14 +6,15 @@ const node_opcua_1 = require("node-opcua");
 class WarehouseBuilder extends builder_1.SystemBuilder {
     constructor() {
         super(...arguments);
+        this.get_home = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.home);
         this.get_ref_switch_vertical_axis = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchVerticalAxis);
         this.get_ref_switch_horizontal_axis = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchHorizontalAxis);
         this.get_ref_switch_cantilever_front = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchCantileverFront);
         this.get_ref_switch_cantilever_back = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.referenceSwitchCantileverBack);
         this.get_encoder_vertical_axis_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.encoderVerticalAxisImpulse1);
         this.get_encoder_horizontal_axis_impulse_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.encoderHorizontalAxisImpulse1);
-        this.get_lb_inside = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.lightBarrierIinside);
-        this.get_lb_outside = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.lightBarrierOutside);
+        this.get_lb_inside = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.lightBarrierIinside);
+        this.get_lb_outside = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.lightBarrierOutside);
         this.get_motor_vertical_axis_up = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorVerticalAxisUp);
         this.get_motor_vertical_axis_down = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorVerticalAxisDown);
         this.get_motor_cantilever_forward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorCantileverForward);
@@ -22,12 +23,20 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
         this.get_motor_cb_backward = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorConveyorBeltBackward);
         this.get_motor_towards_rack = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorHorizontalToRack);
         this.get_motor_towards_conveyor = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.motorHorizontalToConveyor);
-        this.get_trail_sensor_1 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.trailSensor1);
-        this.get_trail_sensor_2 = this.create_refreshFunc(node_opcua_1.DataType.Int32, signalconfig_json_1.warehouse.trailSensor2);
+        this.get_trail_sensor_1 = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.trailSensor1);
+        this.get_trail_sensor_2 = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.warehouse.trailSensor2);
     }
     build() {
         let warehouse = this.nameSpace.addObject({
             browseName: "Warehouse",
+        });
+        this.nameSpace.addVariable({
+            browseName: "Home",
+            propertyOf: warehouse,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_home
+            }
         });
         this.nameSpace.addVariable({
             browseName: "Reference Switch Vertical Axis",
@@ -64,7 +73,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
         this.nameSpace.addVariable({
             browseName: "Encoder Vertical Axis Impulse 1",
             propertyOf: warehouse,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
@@ -72,7 +81,7 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
         this.nameSpace.addVariable({
             browseName: "Encoder Horizontal Axis Impulse 1",
             propertyOf: warehouse,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }

@@ -10,9 +10,11 @@ const builder_1 = require("./builders/builder");
 let s7clientSortingLine = new node_snap7_1.S7Client();
 let s7clientOven = new node_snap7_1.S7Client();
 let s7clientVacuumGripper = new node_snap7_1.S7Client();
+let s7clientWarehouse = new node_snap7_1.S7Client();
 let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
 let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
 let isVacuumConnected = s7clientVacuumGripper.ConnectTo('192.168.0.4', 0, 1);
+let isWarehouseConnected = s7clientWarehouse.ConnectTo('192.168.0.5', 0, 1);
 //if (!isSortingLineConnected) throw Error("Unable to connect to SortingLine!");
 //if (!isOvenConnected) throw Error("Unable to connect to Oven!");
 //if (!isVacuumConnected) throw Error("Unable to connect to Vacuum Gripper!");
@@ -37,6 +39,8 @@ function post_initialize() {
     let oven = ovenBuilder.build();
     let vacuumBuilder = new builder_1.VacuumGripperBuilder(s7clientVacuumGripper, addressSpace, namespace, "Vacuum Gripper");
     let vacuum = vacuumBuilder.build();
+    let warehouseBuilder = new builder_1.WarehouseBuilder(s7clientWarehouse, addressSpace, namespace, "Warehouse");
+    let warehouse = warehouseBuilder.build();
     factory.addReference({
         referenceType: "HasComponent",
         nodeId: vacuum
@@ -48,6 +52,10 @@ function post_initialize() {
     factory.addReference({
         referenceType: "HasComponent",
         nodeId: sortingLine
+    });
+    factory.addReference({
+        referenceType: "HasComponent",
+        nodeId: warehouse
     });
     server.start(function () {
         console.log("Server is now listening ... ( press CTRL+C to stop)");

@@ -1,16 +1,18 @@
 import { OPCUAServer, nodesets, OPCUACertificateManager, Variant, DataType } from "node-opcua";
 import { S7Client, Area, WordLen } from 'node-snap7';
 import path from "path";
-import { SortingLineBuilder, OvenBuilder, VacuumGripperBuilder } from "./builders/builder";
+import { SortingLineBuilder, OvenBuilder, VacuumGripperBuilder, WarehouseBuilder } from "./builders/builder";
 
 
 let s7clientSortingLine = new S7Client();
 let s7clientOven = new S7Client();
 let s7clientVacuumGripper = new S7Client();
+let s7clientWarehouse = new S7Client();
 
 let isSortingLineConnected = s7clientSortingLine.ConnectTo('192.168.0.1', 0, 1);
 let isOvenConnected = s7clientOven.ConnectTo('192.168.0.3', 0, 1);
 let isVacuumConnected = s7clientVacuumGripper.ConnectTo('192.168.0.4', 0, 1);
+let isWarehouseConnected = s7clientWarehouse.ConnectTo('192.168.0.5', 0, 1);
 
 //if (!isSortingLineConnected) throw Error("Unable to connect to SortingLine!");
 //if (!isOvenConnected) throw Error("Unable to connect to Oven!");
@@ -46,6 +48,9 @@ function post_initialize() {
     let vacuumBuilder = new VacuumGripperBuilder(s7clientVacuumGripper, addressSpace, namespace, "Vacuum Gripper");
     let vacuum = vacuumBuilder.build();
 
+    let warehouseBuilder = new WarehouseBuilder(s7clientWarehouse, addressSpace, namespace, "Warehouse");
+    let warehouse = warehouseBuilder.build();
+
     factory.addReference({
         referenceType: "HasComponent",
         nodeId: vacuum
@@ -60,7 +65,11 @@ function post_initialize() {
         referenceType: "HasComponent",
         nodeId: sortingLine
     });
-    
+
+    factory.addReference({
+        referenceType: "HasComponent",
+        nodeId: warehouse
+    });
 
     server.start(function () {
         console.log("Server is now listening ... ( press CTRL+C to stop)");

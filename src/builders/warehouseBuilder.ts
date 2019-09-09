@@ -58,7 +58,7 @@ export class WarehouseBuilder extends SystemBuilder{
         this.nameSpace.addVariable({
             browseName: "Encoder Vertical Axis Impulse 1",
             propertyOf: warehouse,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
@@ -67,7 +67,7 @@ export class WarehouseBuilder extends SystemBuilder{
         this.nameSpace.addVariable({
             browseName: "Encoder Horizontal Axis Impulse 1",
             propertyOf: warehouse,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }
@@ -199,8 +199,8 @@ export class WarehouseBuilder extends SystemBuilder{
     private get_ref_switch_cantilever_back = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchCantileverBack);    
     private get_encoder_vertical_axis_impulse_1 = this.create_refreshFunc(DataType.Int32, warehouse.encoderVerticalAxisImpulse1);    
     private get_encoder_horizontal_axis_impulse_1 = this.create_refreshFunc(DataType.Int32, warehouse.encoderHorizontalAxisImpulse1);    
-    private get_lb_inside = this.create_refreshFunc(DataType.Int32, warehouse.lightBarrierIinside);
-    private get_lb_outside = this.create_refreshFunc(DataType.Int32, warehouse.lightBarrierOutside);    
+    private get_lb_inside = this.create_refreshFunc(DataType.Boolean, warehouse.lightBarrierIinside);
+    private get_lb_outside = this.create_refreshFunc(DataType.Boolean, warehouse.lightBarrierOutside);    
     private get_motor_vertical_axis_up = this.create_refreshFunc(DataType.Boolean, warehouse.motorVerticalAxisUp);    
     private get_motor_vertical_axis_down = this.create_refreshFunc(DataType.Boolean, warehouse.motorVerticalAxisDown);    
     private get_motor_cantilever_forward = this.create_refreshFunc(DataType.Boolean, warehouse.motorCantileverForward);    
@@ -209,8 +209,8 @@ export class WarehouseBuilder extends SystemBuilder{
     private get_motor_cb_backward = this.create_refreshFunc(DataType.Boolean, warehouse.motorConveyorBeltBackward);    
     private get_motor_towards_rack = this.create_refreshFunc(DataType.Boolean, warehouse.motorHorizontalToRack);    
     private get_motor_towards_conveyor = this.create_refreshFunc(DataType.Boolean, warehouse.motorHorizontalToConveyor);
-    private get_trail_sensor_1 = this.create_refreshFunc(DataType.Int32, warehouse.trailSensor1);    
-    private get_trail_sensor_2 = this.create_refreshFunc(DataType.Int32, warehouse.trailSensor2);
+    private get_trail_sensor_1 = this.create_refreshFunc(DataType.Boolean, warehouse.trailSensor1);    
+    private get_trail_sensor_2 = this.create_refreshFunc(DataType.Boolean, warehouse.trailSensor2);
     
 
 

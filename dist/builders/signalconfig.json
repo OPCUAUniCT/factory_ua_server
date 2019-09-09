@@ -363,31 +363,38 @@
         }
     },
     "warehouse": {
+        "home": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 0,
+            "amount": 1,
+            "wordLen": 1
+        },
         "referenceSwitchVerticalAxis": {
             "area": 132,
             "dbNumber": 1,
-            "start": 15,
+            "start": 20,
             "amount": 1,
             "wordLen": 1
         },
         "referenceSwitchHorizontalAxis": {
             "area": 132,
             "dbNumber": 1,
-            "start": 16,
+            "start": 21,
             "amount": 1,
             "wordLen": 1
         },
         "referenceSwitchCantileverFront": {
             "area": 132,
             "dbNumber": 1,
-            "start": 17,
+            "start": 22,
             "amount": 1,
             "wordLen": 1
         },
         "referenceSwitchCantileverBack": {
             "area": 132,
             "dbNumber": 1,
-            "start": 17,
+            "start": 23,
             "amount": 1,
             "wordLen": 1
         },
@@ -408,84 +415,84 @@
         "trailSensor1": {
             "area": 132,
             "dbNumber": 1,
-            "start": 12,
+            "start": 98,
             "amount": 1,
-            "wordLen": 6
+            "wordLen": 1
         },
         "trailSensor2": {
             "area": 132,
             "dbNumber": 1,
-            "start": 12,
+            "start": 99,
             "amount": 1,
-            "wordLen": 6
+            "wordLen": 1
         },
         "motorVerticalAxisUp": {
             "area": 132,
             "dbNumber": 1,
-            "start": 7,
+            "start": 17,
             "amount": 1,
             "wordLen": 1
         },
         "motorVerticalAxisDown": {
             "area": 132,
             "dbNumber": 1,
-            "start": 8,
+            "start": 16,
             "amount": 1,
             "wordLen": 1
         },
         "motorHorizontalToRack": {
             "area": 132,
             "dbNumber": 1,
-            "start": 9,
+            "start": 14,
             "amount": 1,
             "wordLen": 1
         },
         "motorHorizontalToConveyor": {
             "area": 132,
             "dbNumber": 1,
-            "start": 10,
+            "start": 15,
             "amount": 1,
             "wordLen": 1
         },
         "motorConveyorBeltForward": {
             "area": 132,
             "dbNumber": 1,
-            "start": 11,
+            "start": 12,
             "amount": 1,
             "wordLen": 1
         },
         "motorConveyorBeltBackward": {
             "area": 132,
             "dbNumber": 1,
-            "start": 12,
+            "start": 13,
             "amount": 1,
             "wordLen": 1
         },
         "motorCantileverForward": {
             "area": 132,
             "dbNumber": 1,
-            "start": 13,
+            "start": 18,
             "amount": 1,
             "wordLen": 1
         },
         "motorCantileverBackward": {
             "area": 132,
             "dbNumber": 1,
-            "start": 14,
+            "start": 19,
             "amount": 1,
             "wordLen": 1
         },
         "lightBarrierIinside": {
             "area": 132,
             "dbNumber": 1,
-            "start": 14,
+            "start": 96,
             "amount": 1,
             "wordLen": 1
         },
         "lightBarrierOutside": {
             "area": 132,
             "dbNumber": 1,
-            "start": 14,
+            "start": 97,
             "amount": 1,
             "wordLen": 1
         }

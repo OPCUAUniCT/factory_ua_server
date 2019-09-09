@@ -52,7 +52,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         this.nameSpace.addVariable({
             browseName: "Encoder Vertical Axis Impulse 1",
             propertyOf: vacuumGripperObject,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_vertical_axis_impulse_1
             }
@@ -60,7 +60,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         this.nameSpace.addVariable({
             browseName: "Encoder Horizontal Axis Impulse 1",
             propertyOf: vacuumGripperObject,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_horizontal_axis_impulse_1
             }
@@ -68,7 +68,7 @@ class VacuumGripperBuilder extends builder_1.SystemBuilder {
         this.nameSpace.addVariable({
             browseName: "Encoder Rotate Impulse 1",
             propertyOf: vacuumGripperObject,
-            dataType: "Boolean",
+            dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_rotate_impulse_1
             }
