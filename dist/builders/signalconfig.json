@@ -370,6 +370,76 @@
             "amount": 1,
             "wordLen": 1
         },
+        "start": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 1,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go1": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 100,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go2": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 101,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go3": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 102,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go4": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 103,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go5": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 104,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go6": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 105,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go7": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 106,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go8": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 107,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "go9": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 108,
+            "amount": 1,
+            "wordLen": 1
+        },
         "referenceSwitchVerticalAxis": {
             "area": 132,
             "dbNumber": 1,

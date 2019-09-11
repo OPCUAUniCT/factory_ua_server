@@ -1,19 +1,20 @@
 import { SystemBuilder } from "./builder";
 
 import { warehouse } from "./signalconfig.json";
-import { DataType, UAObject } from "node-opcua";
+import { DataType, UAObject, StatusCodes, OPCUABaseServer, Property } from "node-opcua";
+import { buffer_ellipsis } from "node-opcua-utils";
 
 
 export class WarehouseBuilder extends SystemBuilder{
 
     build(): UAObject{
-        let warehouse = this.nameSpace.addObject({
+        let warehouseObject = this.nameSpace.addObject({
             browseName: "Warehouse",
         });
 
         this.nameSpace.addVariable({
             browseName: "Home",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_home
@@ -21,8 +22,17 @@ export class WarehouseBuilder extends SystemBuilder{
         });
 
         this.nameSpace.addVariable({
+            browseName: "Start",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_start
+            }
+        });
+
+        this.nameSpace.addVariable({
             browseName: "Reference Switch Vertical Axis",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_ref_switch_vertical_axis
@@ -31,7 +41,7 @@ export class WarehouseBuilder extends SystemBuilder{
         
         this.nameSpace.addVariable({
             browseName: "Reference Switch Horizontal Axis",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_ref_switch_horizontal_axis
@@ -40,7 +50,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Light Barrier Inside",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_lb_inside
@@ -48,7 +58,7 @@ export class WarehouseBuilder extends SystemBuilder{
         });
         this.nameSpace.addVariable({
             browseName: "Light Barrier Outside",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_lb_outside
@@ -57,7 +67,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Encoder Vertical Axis Impulse 1",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_vertical_axis_impulse_1
@@ -66,7 +76,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Encoder Horizontal Axis Impulse 1",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Int32",
             value: {
                 refreshFunc: this.get_encoder_horizontal_axis_impulse_1
@@ -75,7 +85,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Trail Sensor 1",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_trail_sensor_1
@@ -84,7 +94,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Trail Sensor 2",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_trail_sensor_2
@@ -93,7 +103,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Vertical Axis Up",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_vertical_axis_up
@@ -102,7 +112,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Vertical Axis Down",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_vertical_axis_down
@@ -111,7 +121,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Horizontal Towards Rack",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_towards_rack
@@ -120,7 +130,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Horizontal Towards Conveyor Belt",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_towards_conveyor
@@ -129,7 +139,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Cantilever Forward",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_cantilever_forward
@@ -138,7 +148,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Cantilever Backward",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_cantilever_backward
@@ -147,7 +157,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Conveyor Belt Forward",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_cb_forward
@@ -156,7 +166,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Motor Conveyor Belt Backward",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_motor_cb_backward
@@ -165,7 +175,7 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Reference Switch Cantilever Front",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_ref_switch_cantilever_front
@@ -173,7 +183,7 @@ export class WarehouseBuilder extends SystemBuilder{
         });
         this.nameSpace.addVariable({
             browseName: "Reference Switch Cantilever Front",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_ref_switch_cantilever_front
@@ -182,17 +192,334 @@ export class WarehouseBuilder extends SystemBuilder{
 
         this.nameSpace.addVariable({
             browseName: "Reference Switch Cantilever Back",
-            propertyOf: warehouse,
+            propertyOf: warehouseObject,
             dataType: "Boolean",
             value: {
                 refreshFunc: this.get_ref_switch_cantilever_back
             }
         });
 
-        return warehouse;
+        this.nameSpace.addVariable({
+            browseName: "Go 1",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go1
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 2",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go2
+            }
+        });
+        
+        this.nameSpace.addVariable({
+            browseName: "Go 3",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go3
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 4",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go4
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 5",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go5
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 6",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go6
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 7",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go7
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 8",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go8
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Go 9",
+            propertyOf: warehouseObject,
+            dataType: "Boolean",
+            value: {
+                refreshFunc: this.get_go9
+            }
+        });
+
+        let startHome = this.nameSpace.addMethod(warehouseObject,{
+            browseName: "Home/Start",
+            description: "Start Home Cycle",
+            inputArguments: [],
+            outputArguments: []
+        });
+
+        let stopHome = this.nameSpace.addMethod(warehouseObject,{
+            browseName: "Home/Stop",
+            description: "Stop Home Cycle",
+            inputArguments: [],
+            outputArguments: []
+        });
+
+        let stopStart = this.nameSpace.addMethod(warehouseObject,{
+            browseName: "Start/Stop",
+            description: "Stop Start Cycle",
+            inputArguments: [],
+            outputArguments: []
+        });
+
+        let enableStart = this.nameSpace.addMethod(warehouseObject,{
+            browseName: "Start/Enable",
+            description: "Enable Start Cycle",
+            inputArguments: [],
+            outputArguments: []
+        });
+
+        let enableGo = this.nameSpace.addMethod(warehouseObject,{
+            browseName: "Go",
+            description: "Take a piece",
+           
+            inputArguments: [{
+                name: "EnableMethod",
+                dataType: 12,
+                description: "EnableMethod",
+                valueRank: -1,
+                arrayDimensions: null
+                
+                
+            }],
+            outputArguments: []
+        });
+
+        
+        //set home false
+        stopHome.bindMethod((inputArgs, context, callback) => {
+            this.s7client.WriteArea(warehouse.home.area,warehouse.home.dbNumber,warehouse.home.start,
+                warehouse.home.amount, warehouse.home.wordLen, Buffer.alloc(1,1), (err) => {
+                let callMethodResult;
+                if(err){
+                    console.log("Method Home/Stop"+ err+" - "+ this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: StatusCodes.Good,
+                };
+                console.log("Method Home/Stop Executed")
+                return callback(null, callMethodResult);
+            });
+        });
+        //set home true
+        startHome.bindMethod((inputArgs, context, callback) => {
+            this.s7client.WriteArea(warehouse.home.area,warehouse.home.dbNumber,warehouse.home.start,
+                warehouse.home.amount, warehouse.home.wordLen, Buffer.alloc(1,0), (err) => {
+                let callMethodResult;
+                if(err){
+                    console.log("Method Home/Start"+ err+" - "+ this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: StatusCodes.Good,
+                };
+                console.log("Method Home/Stop Executed")
+                return callback(null, callMethodResult);
+            });
+        });
+        //set start false
+        stopStart.bindMethod((inputArgs, context, callback) => {
+            this.s7client.WriteArea(warehouse.start.area,warehouse.start.dbNumber,warehouse.start.start,
+                warehouse.start.amount, warehouse.start.wordLen, Buffer.alloc(1,0), (err) => {
+                let callMethodResult;
+                if(err){
+                    console.log("Method Start/Stop"+ err+" - "+ this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: StatusCodes.Good,
+                };
+                console.log("Method Start/Stop Executed")
+                return callback(null, callMethodResult);
+            });
+        });
+        //set start true
+        enableStart.bindMethod((inputArgs, context, callback) => {          
+            this.s7client.WriteArea(warehouse.start.area,warehouse.start.dbNumber,warehouse.start.start,
+                warehouse.start.amount, warehouse.start.wordLen, Buffer.alloc(1,1), (err) => {
+                let callMethodResult;
+                if(err){
+                    console.log("Method Enable start"+ err+" - "+ this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: StatusCodes.Good,
+                };
+                console.log("Method Enable Start Executed")
+                return callback(null, callMethodResult);
+            });
+        });
+
+        //set go position
+        enableGo.bindMethod((inputArgs, context, callback) => {
+            let inputValue;
+            let selected = warehouse.go1;
+            var buffer = Buffer.alloc(1,0);
+            console.log("InputArgs :" + inputArgs);
+            for(let arg of inputArgs.values()){
+                inputValue = arg.value;
+                console.log("InputArgs Value :" + arg.value);
+                console.log("InputValue :" + inputValue);
+            }
+            //selected = this.find_go_property(inputValue);
+            switch(inputValue){
+                case "0x0":
+                    selected = warehouse.go1;
+                    
+                    break;
+                case "0x1":
+                    selected = warehouse.go2;
+                    break;
+    
+                case "0x2":
+                    selected = warehouse.go3;
+                    break;
+                
+                case "1x0":
+                    selected = warehouse.go4;
+                    break;
+                case "1x1":
+                    selected = warehouse.go5;
+                    break;
+                case "1x2":
+                    selected = warehouse.go6;
+                    break;
+                case "2x0":
+                    selected = warehouse.go7;
+                    break;
+                case "2x1":
+                    selected = warehouse.go8;
+                    break;
+                case "2x2":
+                    selected = warehouse.go9;
+                    break;
+            }
+            let callMethodResult;    
+            console.log("Selected :" + selected.start);
+            
+            //reset
+            this.s7client.WriteArea(warehouse.go1.area,warehouse.go1.dbNumber,100, 
+                4, 0x01, buffer, (err) =>{
+                if(err){
+                    console.log("Method EnableGo err:"+ err+" - "+ this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: StatusCodes.Good,
+                };
+                return callback(null, callMethodResult);
+                //write inputval
+                /* this.s7client.WriteArea(selected.area,selected.dbNumber,selected.start, 
+                    selected.amount, selected.wordLen, Buffer.alloc(1,1), (err) =>{
+                    if(err){
+                        console.log("Method EnableGo err:"+ err+" - "+ this.s7client.ErrorText(err));
+                        callMethodResult = {
+                            statusCode: StatusCodes.BadInternalError,
+                        };
+                        return callback(err, callMethodResult);
+                    }
+                    callMethodResult = {
+                        statusCode: StatusCodes.Good,
+                    };
+                    return callback(null, callMethodResult); 
+                }); */ 
+                
+                 
+            });
+
+            //write inputval
+            /* this.s7client.WriteArea(selected.area,selected.dbNumber,selected.start, 
+                selected.amount, selected.wordLen, Buffer.alloc(1,0), (err) =>{
+                if(err){
+                    console.log("Method EnableGo err:"+ err+" - "+ this.s7client.ErrorText(err));
+                    callMethodResult = {
+                        statusCode: StatusCodes.BadInternalError,
+                    };
+                    return callback(err, callMethodResult);
+                }
+                callMethodResult = {
+                    statusCode: StatusCodes.Good,
+                };
+                return callback(null, callMethodResult); 
+            }); */          
+                
+        });
+
+        
+
+        
+          
+        
+
+        return warehouseObject;
     }
 
     private get_home = this.create_refreshFunc(DataType.Boolean, warehouse.home);
+    private get_start = this.create_refreshFunc(DataType.Boolean, warehouse.start);
+    private get_go1 = this.create_refreshFunc(DataType.Boolean, warehouse.go1);
+    private get_go2 = this.create_refreshFunc(DataType.Boolean, warehouse.go2);
+    private get_go3 = this.create_refreshFunc(DataType.Boolean, warehouse.go3);
+    private get_go4 = this.create_refreshFunc(DataType.Boolean, warehouse.go4);
+    private get_go5 = this.create_refreshFunc(DataType.Boolean, warehouse.go5);
+    private get_go6 = this.create_refreshFunc(DataType.Boolean, warehouse.go6);
+    private get_go7 = this.create_refreshFunc(DataType.Boolean, warehouse.go7);
+    private get_go8 = this.create_refreshFunc(DataType.Boolean, warehouse.go8);
+    private get_go9 = this.create_refreshFunc(DataType.Boolean, warehouse.go9);
     private get_ref_switch_vertical_axis = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchVerticalAxis);    
     private get_ref_switch_horizontal_axis = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchHorizontalAxis);    
     private get_ref_switch_cantilever_front = this.create_refreshFunc(DataType.Boolean, warehouse.referenceSwitchCantileverFront);
@@ -211,8 +538,17 @@ export class WarehouseBuilder extends SystemBuilder{
     private get_motor_towards_conveyor = this.create_refreshFunc(DataType.Boolean, warehouse.motorHorizontalToConveyor);
     private get_trail_sensor_1 = this.create_refreshFunc(DataType.Boolean, warehouse.trailSensor1);    
     private get_trail_sensor_2 = this.create_refreshFunc(DataType.Boolean, warehouse.trailSensor2);
-    
 
+     
+        
+
+    
+    
+    
+         
+
+        
+    
 
 
 
