@@ -370,6 +370,13 @@
             "amount": 1,
             "wordLen": 1
         },
+        "home_ok": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 109,
+            "amount": 1,
+            "wordLen": 1
+        },
         "start": {
             "area": 132,
             "dbNumber": 1,
@@ -378,6 +385,8 @@
             "wordLen": 1
         },
         "go1": {
+            "byte": 0,
+            "bit": 4,
             "area": 132,
             "dbNumber": 1,
             "start": 100,
@@ -385,6 +394,8 @@
             "wordLen": 1
         },
         "go2": {
+            "byte": 0,
+            "bit": 5,
             "area": 132,
             "dbNumber": 1,
             "start": 101,
@@ -392,6 +403,8 @@
             "wordLen": 1
         },
         "go3": {
+            "byte": 0,
+            "bit": 6,
             "area": 132,
             "dbNumber": 1,
             "start": 102,
@@ -399,6 +412,8 @@
             "wordLen": 1
         },
         "go4": {
+            "byte": 0,
+            "bit": 7,
             "area": 132,
             "dbNumber": 1,
             "start": 103,
@@ -406,6 +421,8 @@
             "wordLen": 1
         },
         "go5": {
+            "byte": 1,
+            "bit": 0,
             "area": 132,
             "dbNumber": 1,
             "start": 104,
@@ -413,6 +430,8 @@
             "wordLen": 1
         },
         "go6": {
+            "byte": 1,
+            "bit": 1,
             "area": 132,
             "dbNumber": 1,
             "start": 105,
@@ -420,6 +439,8 @@
             "wordLen": 1
         },
         "go7": {
+            "byte": 1,
+            "bit": 2,
             "area": 132,
             "dbNumber": 1,
             "start": 106,
@@ -427,6 +448,8 @@
             "wordLen": 1
         },
         "go8": {
+            "byte": 1,
+            "bit": 3,
             "area": 132,
             "dbNumber": 1,
             "start": 107,
@@ -434,6 +457,8 @@
             "wordLen": 1
         },
         "go9": {
+            "byte": 1,
+            "bit": 4,
             "area": 132,
             "dbNumber": 1,
             "start": 108,

@@ -392,14 +392,11 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
         enableGo.bindMethod((inputArgs, context, callback) => {
             let inputValue;
             let selected = signalconfig_json_1.warehouse.go1;
-            var buffer = Buffer.alloc(1, 0);
-            console.log("InputArgs :" + inputArgs);
             for (let arg of inputArgs.values()) {
                 inputValue = arg.value;
                 console.log("InputArgs Value :" + arg.value);
                 console.log("InputValue :" + inputValue);
             }
-            //selected = this.find_go_property(inputValue);
             switch (inputValue) {
                 case "0x0":
                     selected = signalconfig_json_1.warehouse.go1;
@@ -431,50 +428,46 @@ class WarehouseBuilder extends builder_1.SystemBuilder {
             }
             let callMethodResult;
             console.log("Selected :" + selected.start);
-            //reset
-            this.s7client.WriteArea(signalconfig_json_1.warehouse.go1.area, signalconfig_json_1.warehouse.go1.dbNumber, 100, 4, 0x01, buffer, (err) => {
+            this.s7client.ReadArea(signalconfig_json_1.warehouse.go1.area, signalconfig_json_1.warehouse.go1.dbNumber, 12, 2, 2, (err, res) => {
                 if (err) {
-                    console.log("Method EnableGo err:" + err + " - " + this.s7client.ErrorText(err));
                     callMethodResult = {
                         statusCode: node_opcua_1.StatusCodes.BadInternalError,
                     };
                     return callback(err, callMethodResult);
                 }
-                callMethodResult = {
-                    statusCode: node_opcua_1.StatusCodes.Good,
-                };
-                return callback(null, callMethodResult);
-                //write inputval
-                /* this.s7client.WriteArea(selected.area,selected.dbNumber,selected.start,
-                    selected.amount, selected.wordLen, Buffer.alloc(1,1), (err) =>{
-                    if(err){
-                        console.log("Method EnableGo err:"+ err+" - "+ this.s7client.ErrorText(err));
+                // reset all interested bits
+                setBit(res, signalconfig_json_1.warehouse.go1.byte, signalconfig_json_1.warehouse.go1.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go2.byte, signalconfig_json_1.warehouse.go2.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go3.byte, signalconfig_json_1.warehouse.go3.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go4.byte, signalconfig_json_1.warehouse.go4.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go5.byte, signalconfig_json_1.warehouse.go5.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go6.byte, signalconfig_json_1.warehouse.go6.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go7.byte, signalconfig_json_1.warehouse.go7.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go8.byte, signalconfig_json_1.warehouse.go8.bit, 0);
+                setBit(res, signalconfig_json_1.warehouse.go9.byte, signalconfig_json_1.warehouse.go9.bit, 0);
+                //Set the selected bit
+                setBit(res, selected.byte, selected.bit, 1);
+                this.s7client.WriteArea(signalconfig_json_1.warehouse.go1.area, signalconfig_json_1.warehouse.go1.dbNumber, 12, 2, 2, res, function (err) {
+                    if (err) {
                         callMethodResult = {
-                            statusCode: StatusCodes.BadInternalError,
+                            statusCode: node_opcua_1.StatusCodes.BadInternalError,
                         };
                         return callback(err, callMethodResult);
                     }
                     callMethodResult = {
-                        statusCode: StatusCodes.Good,
+                        statusCode: node_opcua_1.StatusCodes.Good,
                     };
                     return callback(null, callMethodResult);
-                }); */
+                });
             });
-            //write inputval
-            /* this.s7client.WriteArea(selected.area,selected.dbNumber,selected.start,
-                selected.amount, selected.wordLen, Buffer.alloc(1,0), (err) =>{
-                if(err){
-                    console.log("Method EnableGo err:"+ err+" - "+ this.s7client.ErrorText(err));
-                    callMethodResult = {
-                        statusCode: StatusCodes.BadInternalError,
-                    };
-                    return callback(err, callMethodResult);
+            function setBit(buffer, i, bit, value) {
+                if (value == 0) {
+                    buffer[i] &= ~(1 << bit);
                 }
-                callMethodResult = {
-                    statusCode: StatusCodes.Good,
-                };
-                return callback(null, callMethodResult);
-            }); */
+                else {
+                    buffer[i] |= (1 << bit);
+                }
+            }
         });
         return warehouseObject;
     }
