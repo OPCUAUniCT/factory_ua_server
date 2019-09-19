@@ -127,6 +127,7 @@ export class SortingLineBuilder extends SystemBuilder {
         });
 
         this.nameSpace.addVariable({
+            nodeId: "ns=1;i=5000",
             browseName: "White State",
             propertyOf: sortingline,
             dataType: "Boolean",
@@ -136,6 +137,7 @@ export class SortingLineBuilder extends SystemBuilder {
         });
 
         this.nameSpace.addVariable({
+            nodeId: "ns=1;i=5001",
             browseName: "Red State",
             propertyOf: sortingline,
             dataType: "Boolean",
@@ -145,6 +147,7 @@ export class SortingLineBuilder extends SystemBuilder {
         });
 
         this.nameSpace.addVariable({
+            nodeId: "ns=1;i=5002",
             browseName: "Blue State",
             propertyOf: sortingline,
             dataType: "Boolean",
