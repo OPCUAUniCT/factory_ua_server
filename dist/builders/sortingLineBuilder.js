@@ -132,6 +132,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             }
         });
         this.nameSpace.addVariable({
+            nodeId: "ns=1;i=5000",
             browseName: "White State",
             propertyOf: sortingline,
             dataType: "Boolean",
@@ -140,6 +141,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             }
         });
         this.nameSpace.addVariable({
+            nodeId: "ns=1;i=5001",
             browseName: "Red State",
             propertyOf: sortingline,
             dataType: "Boolean",
@@ -148,6 +150,7 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             }
         });
         this.nameSpace.addVariable({
+            nodeId: "ns=1;i=5002",
             browseName: "Blue State",
             propertyOf: sortingline,
             dataType: "Boolean",
