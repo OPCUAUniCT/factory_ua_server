@@ -125,6 +125,33 @@ export class SortingLineBuilder extends SystemBuilder {
                 refreshFunc: this.get_color_sensor
             }
         });
+
+        this.nameSpace.addVariable({
+            browseName: "White State",
+            propertyOf: sortingline,
+            dataType: "Boolean",
+            value: {
+                timestamped_get: this.get_white_state
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Red State",
+            propertyOf: sortingline,
+            dataType: "Boolean",
+            value: {
+                timestamped_get: this.get_red_state
+            }
+        });
+
+        this.nameSpace.addVariable({
+            browseName: "Blue State",
+            propertyOf: sortingline,
+            dataType: "Boolean",
+            value: {
+                timestamped_get: this.get_blue_state
+            }
+        });
         
         return sortingline;
     }
@@ -142,4 +169,8 @@ export class SortingLineBuilder extends SystemBuilder {
     private get_lb_red = this.create_refreshFunc(DataType.Boolean, sortingLine.lightBarrierRed);
     private get_lb_blue = this.create_timestamped_get(DataType.Boolean, sortingLine.lightBarrierBlue);
     private get_color_sensor = this.create_refreshFunc(DataType.Int16, sortingLine.colorSensor);
+    private get_white_state = this.create_timestamped_get(DataType.Boolean, sortingLine.white);
+    private get_red_state = this.create_timestamped_get(DataType.Boolean, sortingLine.red);
+    private get_blue_state = this.create_timestamped_get(DataType.Boolean, sortingLine.blue);
+
 }

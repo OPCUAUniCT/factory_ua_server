@@ -90,6 +90,27 @@
             "start": 6,
             "amount": 1,
             "wordLen": 4
+        },
+        "white": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 64,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "red": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 65,
+            "amount": 1,
+            "wordLen": 1
+        },
+        "blue": {
+            "area": 132,
+            "dbNumber": 1,
+            "start": 66,
+            "amount": 1,
+            "wordLen": 1
         }
     },
     "oven": {

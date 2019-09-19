@@ -19,6 +19,9 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
         this.get_lb_red = this.create_refreshFunc(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierRed);
         this.get_lb_blue = this.create_timestamped_get(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.lightBarrierBlue);
         this.get_color_sensor = this.create_refreshFunc(node_opcua_1.DataType.Int16, signalconfig_json_1.sortingLine.colorSensor);
+        this.get_white_state = this.create_timestamped_get(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.white);
+        this.get_red_state = this.create_timestamped_get(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.red);
+        this.get_blue_state = this.create_timestamped_get(node_opcua_1.DataType.Boolean, signalconfig_json_1.sortingLine.blue);
     }
     build() {
         let sortingline = this.nameSpace.addObject({
@@ -126,6 +129,30 @@ class SortingLineBuilder extends builder_1.SystemBuilder {
             dataType: "Int16",
             value: {
                 refreshFunc: this.get_color_sensor
+            }
+        });
+        this.nameSpace.addVariable({
+            browseName: "White State",
+            propertyOf: sortingline,
+            dataType: "Boolean",
+            value: {
+                timestamped_get: this.get_white_state
+            }
+        });
+        this.nameSpace.addVariable({
+            browseName: "Red State",
+            propertyOf: sortingline,
+            dataType: "Boolean",
+            value: {
+                timestamped_get: this.get_red_state
+            }
+        });
+        this.nameSpace.addVariable({
+            browseName: "Blue State",
+            propertyOf: sortingline,
+            dataType: "Boolean",
+            value: {
+                timestamped_get: this.get_blue_state
             }
         });
         return sortingline;
